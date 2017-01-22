@@ -2,7 +2,7 @@
     <string name="app_name">AudioJam</string>
 
     <!-- Strings related to login -->
-    <string name="connection_button">Connection</string>
+    <string name="connection_button">Connexion</string>
     <string name="inscription_button">Inscription</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Mot de Passe </string>
