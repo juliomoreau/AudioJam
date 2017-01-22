@@ -7,5 +7,5 @@ package com.example.jules.audiojam;
 public class TestActivity {
 
     blabla;
-    lol2
+    lol2;
 }
