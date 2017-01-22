@@ -8,5 +8,5 @@ public class TestActivity {
 
     blabla;
     lol2;
-    lol4;
+    lol45;
 }
