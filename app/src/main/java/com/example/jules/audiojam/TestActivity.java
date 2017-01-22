@@ -9,4 +9,5 @@ public class TestActivity {
     blabla;
     lol2;
     lol45;
+    aaaaaa;
 }
