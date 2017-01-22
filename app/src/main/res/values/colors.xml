@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="menuWhite">#FFFFFF</color>
+    <color name="backgroundYellow">#DADADA</color>
+    <color name="textemphasis1">#000</color>
+    <color name="textemphasis2">#979797</color>
 </resources>
