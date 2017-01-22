@@ -8,4 +8,5 @@ public class TestActivity {
 
     blabla;
     lol2;
+    lol4;
 }
