@@ -10,7 +10,7 @@
     <string name="action_sign_in_facebook">Se connecter avec Facebook</string>
     <string name="action_sign_in_google">Se connecter avec Google</string>
     <string name="action_sign_in_short">Connecter</string>
-    <string name="error_invalid_email">Cette adresse mail n'est pas valable</string>
+    <string name="error_invalid_email">Cette adresse mail n\'est pas valable</string>
     <string name="error_invalid_password">Le mot de passe est trop court</string>
     <string name="error_incorrect_password">Mot de passe incorrect</string>
     <string name="error_field_required">Ce champ est requis</string>
