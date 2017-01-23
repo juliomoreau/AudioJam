@@ -6,6 +6,8 @@
     <string name="inscription_button">Inscription</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Mot de Passe </string>
+    <string name="prompt_name">Nom</string>
+    <string name="prompt_password_verif">Verification Mot de Passe</string>
     <string name="action_sign_in">Se connecter</string>
     <string name="action_sign_in_facebook">Se connecter avec Facebook</string>
     <string name="action_sign_in_google">Se connecter avec Google</string>
