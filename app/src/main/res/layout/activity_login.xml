@@ -12,6 +12,7 @@
     tools:context="com.example.jules.audiojam.LoginActivity">
 
     <!-- Login progress -->
+
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
