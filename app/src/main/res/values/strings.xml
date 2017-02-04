@@ -30,6 +30,12 @@
     <string name="btn_logout">LOGOUT</string>
     <string name="name">Fullname</string>
     <string name="facebook_app_id">1931899523705488</string>
+    <string name="profile_name">MY NAME HERE</string>
+    <string name="profile_link">My profile</string>
+    <string name="my_playlist">My playlists</string>
+    <string name="new_add_playlist">Join/New playlist</string>
+
+
     <string name="title_activity_main2">Main2Activity</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
