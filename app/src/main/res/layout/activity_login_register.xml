@@ -5,10 +5,6 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/backgroundYellow"
     tools:context="com.example.jules.audiojam.LoginActivity">
 
@@ -23,7 +19,7 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:weightSum="1"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -50,13 +46,13 @@
                     <Button
                         android:text="@string/inscription_button"
                         android:textColor="@color/textemphasis1"
-                        android:layout_width="190dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:background="@color/menuWhite"
                         android:id="@+id/button_inscription_screen"
                         style="@style/Widget.AppCompat.Button.selector"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:layout_width="190dp"
+                        android:layout_weight="1" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -64,7 +60,9 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical"
                     android:background="@drawable/infofill"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp">
 
                     <android.support.design.widget.TextInputLayout
                         android:layout_width="match_parent"
@@ -123,7 +121,7 @@
                         android:paddingLeft="40dp">
 
                         <EditText
-                            android:id="@+id/password"
+                            android:id="@+id/passwordconf"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="@string/prompt_password_verif"
@@ -141,7 +139,9 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
                 <CheckBox
                     android:text="Se souvenir de moi"
@@ -162,26 +162,34 @@
                     android:layout_height="30dp" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/button2"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_weight="6.79"
-                android:text="@string/action_sign_in_facebook"
-                android:backgroundTint="?android:attr/colorPrimaryDark"
-                android:textSize="18sp" />
+                android:layout_height="match_parent"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
-            <Button
-                android:id="@+id/button3"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/action_sign_in_google"
-                android:textStyle="bold"
-                android:layout_weight="6.79"
-                android:backgroundTint="@android:color/holo_red_dark"
-                android:textSize="18sp" />
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_weight="6.79"
+                    android:text="@string/action_sign_in_facebook"
+                    android:backgroundTint="?android:attr/colorPrimaryDark"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/button3"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/action_sign_in_google"
+                    android:textStyle="bold"
+                    android:layout_weight="6.79"
+                    android:backgroundTint="@android:color/holo_red_dark"
+                    android:textSize="18sp" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

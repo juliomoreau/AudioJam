@@ -7,6 +7,8 @@
     <color name="backgroundYellow">#DADADA</color>
     <color name="textemphasis1">#000</color>
     <color name="textemphasis2">#979797</color>
+    <color name="textemphasis3">#fff</color>
+    <color name="textemphasis4">#a6ca98</color>
     <color name="bg_login">#26ae90</color>
     <color name="bg_register">#2e3237</color>
     <color name="bg_main">#428bca</color>
@@ -20,4 +22,15 @@
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
+    <color name="main_menu_green">#323d38</color>
+    <color name="main_menu_title_text">#aabfb0</color>
+    <color name="main_menu_title_backgd">#47886b</color>
+    <color name="main_menu_search_text">#406253</color>
+    <color name="menu_top_backgd_green">#45a446</color>
+    <color name="backgroundGREY_main">#ededed</color>
+    <color name="rating_up">#fbaf5d</color>
+    <color name="rating_down">#51b8de</color>
+    <color name="fonc_conf_darkgrey">#474747</color>
+
+
 </resources>
