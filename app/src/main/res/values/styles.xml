@@ -29,6 +29,20 @@
         <item name="colorAccent">@color/menu_top_backgd_green</item>
     </style>
 
+    <style name="Tabstyle" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@color/white</item>
+        <item name="tabBackground">@color/menu_top_backgd_green</item>
+        <item name="tabTextAppearance">@style/AppTabTextAppearance</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+        <item name="android:background">@color/menu_top_backgd_green</item>
+
+    </style>
+
+    <style name="AppTabTextAppearance">
+        <item name="android:textColor">@color/textemphasis4</item>
+        <item name="textAllCaps">true</item>
+
+    </style>
     <style name="MenuDesignNavigation">
         <item name="colorPrimary"> @color/white</item>
     </style>
