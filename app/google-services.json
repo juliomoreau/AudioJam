@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "297139494572",
+    "firebase_url": "https://audiojam-8c976.firebaseio.com",
+    "project_id": "audiojam-8c976",
+    "storage_bucket": "audiojam-8c976.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:297139494572:android:c8768b82eb817429",
+        "android_client_info": {
+          "package_name": "com.example.jules.audiojam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "297139494572-epcd9onbopmmngkbeug923eb5i357nfl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsZ2-Zna-6-8TFlDrBPnQoI8ito799w0Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
