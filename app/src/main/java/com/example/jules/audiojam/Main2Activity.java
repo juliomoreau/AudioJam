@@ -30,7 +30,7 @@ import com.example.jules.audiojam.MainFragment3;
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Toolbar toolbar;
+    private Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -38,7 +38,6 @@ public class Main2Activity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -142,18 +141,10 @@ public class Main2Activity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_my_playlist) {
+            // Handle the My Playlist action
+        } else if (id == R.id.nav_new_add_playlist) {
+            //Handle the Add/New Playlist
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

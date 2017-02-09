@@ -40,6 +40,13 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+
+    /**
+     * Creating dummy_credentials for test
+     */
+    private static final String[] DUMMY_CREDENTIALS = new String[] {
+            "foo@example.com:hello", "bar@example.com:world" };
+
     /**
      * Id to identity READ_CONTACTS permission request.
      */

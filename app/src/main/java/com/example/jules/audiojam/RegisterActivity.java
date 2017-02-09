@@ -38,6 +38,12 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class RegisterActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
+     * Creating dummy_credentials for test
+     */
+    private static final String[] DUMMY_CREDENTIALS = new String[] {
+            "foo@example.com:hello", "bar@example.com:world" };
+
+    /**
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
@@ -73,6 +79,9 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                     return true;
                 }
                 return false;
+            }
+
+            private void attemptRegister() {
             }
         });
 
