@@ -1,6 +1,18 @@
 <resources>
-    <string name="app_name">Firebase Auth</string>
+    <string name="app_name">AudioJam</string>
     <string name="action_sign_in_short">Register</string>
+    <string name="connection_button">Connexion</string>
+    <string name="inscription_button">Inscription</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de Passe </string>
+    <string name="action_sign_in">Se connecter</string>
+    <string name="action_sign_in_facebook">Se connecter avec Facebook</string>
+    <string name="action_sign_in_google">Se connecter avec Google</string>
+    <string name="prompt_name">Nom</string>
+    <string name="prompt_password_verif">Verification Mot de Passe</string>
+    <string name="action_sign_up">S\'enregistrer</string>
+    <string name="reset_passwd">Réinitialiser son mot de passe</string>
+
     <string name="email">Email</string>
     <string name="minimum_password">Password too short, enter minimum 6 characters!</string>
     <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
