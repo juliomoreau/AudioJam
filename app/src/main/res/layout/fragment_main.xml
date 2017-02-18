@@ -56,7 +56,7 @@
                         <VideoView
                             android:layout_width="match_parent"
                             android:id="@+id/videoView"
-                            android:layout_height="160dp" />
+                            android:layout_height="170dp" />
 
                         <ExpandableListView
                             android:layout_width="match_parent"
