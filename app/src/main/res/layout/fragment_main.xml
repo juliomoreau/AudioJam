@@ -6,83 +6,21 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TabHost
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    </GridLayout>
 
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                style="@style/Tabstyle"
-                />
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView" />
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-
-                <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:text="@string/playing"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/tViewtop1"
-                            android:textStyle="bold"
-                            android:textSize="20dp"
-                            android:textColor="@color/textemphasis1"
-                            android:paddingLeft="50dp"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp" />
-
-                        <VideoView
-                            android:layout_width="match_parent"
-                            android:id="@+id/videoView"
-                            android:layout_height="170dp" />
-
-                        <ExpandableListView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    >
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-            </FrameLayout>
-        </LinearLayout>
-    </TabHost>
+    <view
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        class="com.google.android.youtube.player.YouTubePlayerView"
+        android:id="@+id/view" />
 </FrameLayout>

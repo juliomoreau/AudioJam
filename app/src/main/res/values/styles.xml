@@ -47,4 +47,10 @@
         <item name="colorPrimary"> @color/white</item>
     </style>
 
+
+    <style name="whiteImageButtonStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="background">@color/menu_top_backgd_green</item>
+        <item name="android:textColor">@color/menuWhite</item>
+        <item name="android:color">@color/white</item>
+    </style>
 </resources>

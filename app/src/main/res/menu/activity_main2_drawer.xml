@@ -5,5 +5,7 @@
         android:id="@+id/nav_my_playlist" />
     <item android:title="@string/new_add_playlist"
         android:id="@+id/nav_new_add_playlist" />
+    <item android:title="@string/action_settings"
+        android:id="@+id/nav_settings" />
 
 </menu>
