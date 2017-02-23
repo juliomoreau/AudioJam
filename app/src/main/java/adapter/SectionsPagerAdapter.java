@@ -5,10 +5,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.domicile.testing.LiveActivity;
-import com.example.domicile.testing.MainActivity;
-import com.example.domicile.testing.MusicActivity;
-import com.example.domicile.testing.OptionActivity;
+import com.example.jules.audiojam.LiveActivity;
+import com.example.jules.audiojam.MusicActivity;
+import com.example.jules.audiojam.OptionActivity;
 
 /**
  * Created by domicile on 19/02/2017.
