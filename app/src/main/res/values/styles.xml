@@ -16,8 +16,19 @@
 
     </style>
 
+    <style name="AudioJamTheme" parent="AppTheme" >
+        <item name="colorPrimary">@color/menu_top_backgd_green</item>
+        <item name="colorPrimaryDark">@color/menu_top_backgd_green</item>
+        <item name="colorAccent">@color/menu_top_backgd_green</item>
+    </style>
+    <style name="MenuDesignNavigation">
+        <item name="colorPrimary"> @color/white</item>
+    </style>
+
     <style name="infofill">
 
     </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

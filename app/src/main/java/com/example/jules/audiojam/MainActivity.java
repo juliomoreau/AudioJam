@@ -108,11 +108,11 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(MainActivity.this, "Email address is updated. Please sign in with new email id!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(MainActivity.this, "E-mail mis à jour. Reconnectez vous avec votre nouvelle adresse e-mail svp", Toast.LENGTH_LONG).show();
                                         signOut();
                                         progressBar.setVisibility(View.GONE);
                                     } else {
-                                        Toast.makeText(MainActivity.this, "Failed to update email!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(MainActivity.this, "Erreur lors de la mise à jour de l'e-mail.", Toast.LENGTH_LONG).show();
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 }
@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(MainActivity.this, "Your profile is deleted:( Create a account now!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(MainActivity.this, "Compte supprimé ! Crées un compte dès maintenant!", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(MainActivity.this, SignupActivity.class));
                                         finish();
                                         progressBar.setVisibility(View.GONE);

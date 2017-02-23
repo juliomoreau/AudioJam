@@ -20,4 +20,6 @@
     <color name="btn_login_bg">#eceef1</color>
     <color name="lbl_name">#333333</color>
     <color name="btn_logut_bg">#ff6861</color>
+    <color name="main_menu_green">#323d38</color>
+    <color name="menu_top_backgd_green">#45a446</color>
 </resources>
