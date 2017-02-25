@@ -12,16 +12,7 @@
     <style name="Widget.AppCompat.Button.selector">
         <!--Customize theme here -->
         <item name="android:color">@color/menuWhite</item>
-
     </style>
-
-    <style name="infofill">
-
-    </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AudioJamTheme" parent="AppTheme" >
         <item name="colorPrimary">@color/menu_top_backgd_green</item>
@@ -29,28 +20,13 @@
         <item name="colorAccent">@color/menu_top_backgd_green</item>
     </style>
 
-    <style name="Tabstyle" parent="Widget.Design.TabLayout">
-        <item name="tabIndicatorColor">#FFF</item>
-        <item name="tabBackground">@color/menu_top_backgd_green</item>
-        <item name="tabTextAppearance">@style/AppTabTextAppearance</item>
-        <item name="tabSelectedTextColor">@color/white</item>
-        <item name="android:background">@color/menu_top_backgd_green</item>
-
+    <style name="LiveMenuButton" parent="Base.Widget.AppCompat.Button">
+        <item name="background">@color/colorBackground</item>
     </style>
 
-    <style name="AppTabTextAppearance">
-        <item name="android:textColor">@color/textemphasis4</item>
-        <item name="textAllCaps">true</item>
-
-    </style>
-    <style name="MenuDesignNavigation">
-        <item name="colorPrimary"> @color/white</item>
-    </style>
-
-
-    <style name="whiteImageButtonStyle" parent="Widget.AppCompat.ImageButton">
-        <item name="background">@color/menu_top_backgd_green</item>
-        <item name="android:textColor">@color/menuWhite</item>
+    <style name="ActivityToolbarTitle">
         <item name="android:color">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:gravity">center_vertical</item>
     </style>
 </resources>

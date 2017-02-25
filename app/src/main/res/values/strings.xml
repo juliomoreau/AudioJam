@@ -29,25 +29,24 @@
     <string name="welcome">Welcome</string>
     <string name="btn_logout">LOGOUT</string>
     <string name="name">Fullname</string>
+
+
+
     <string name="facebook_app_id">1931899523705488</string>
     <string name="profile_name">MY NAME HERE</string>
-    <string name="profile_link">My profile</string>
-    <string name="my_playlist">My playlists</string>
     <string name="new_add_playlist">Join/New playlist</string>
     <string name="playing">Now Playing :</string>
-
-
-    <string name="title_activity_main2">Main2Activity</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
-    <string name="search_from_youtube">Search for a song:</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="settings">Settings</string>
+    <string name="myprofile">My profile</string>
+    <string name="myplaylists">My Playlists</string>
+    <string name="joinaddplaylist"> Join / Create Playlist</string>
+    <string name="help">Help</string>
+    <string name="about">About</string>
+    <string name="logout">Log out</string>
+    <string name="search">Search for a title:</string>
 
 
 </resources>
