@@ -13,10 +13,16 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:layout_margin="10dp" />
 
-    <VideoView
-        android:layout_width="match_parent"
-        android:layout_height="126dp"
-        android:id="@+id/videoView" />
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/youtube_layout">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="126dp"
+            android:id="@+id/videoView" />
+    </FrameLayout>
 
     <LinearLayout
         android:orientation="horizontal"
