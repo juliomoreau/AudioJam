@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <TextView
+        android:text="Currently playing:"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/myprofile_menuview"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_margin="10dp" />
+
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:id="@+id/videoView" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <Button
+            android:text="Coming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnComing"
+            android:layout_weight="1"
+            style="@style/LiveMenuButton"
+            android:background="@color/colorBackground" />
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="fill_parent"
+            android:background="@color/black"></View>
+
+        <Button
+            android:text="History"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnHistory"
+            android:layout_weight="1"
+            style="@style/LiveMenuButton"
+            android:background="@color/colorBackground" />
+
+        <View
+            android:layout_width="2px"
+            android:layout_height="fill_parent"
+            android:background="@color/black"></View>
+
+        <Button
+            android:text="Wall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnWall"
+            android:layout_weight="1"
+            android:background="@color/colorBackground" />
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listComing" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listHistory" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listWall" />
+
+</LinearLayout>

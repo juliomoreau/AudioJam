@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:id="@+id/group_myPlaylist_id" >
+        <item android:title="@string/myplaylists"
+            android:id="@+id/nav_item_myPlaylist"
+            android:icon="@mipmap/myplaylists" />
+    </group>
+
+
+    <group android:id="@+id/group_join_add_id" >
+        <item android:title="@string/joinaddplaylist"
+            android:id="@+id/nav_item_join_add"
+            android:icon="@mipmap/joinaddplaylist" />
+    </group>
+    <group android:id="@+id/group_settings_id">
+
+        <item android:title="@string/settings"
+            android:icon="@mipmap/settings"
+            android:id="@+id/nav_item_settings" />
+    </group>
+    <group android:id="@+id/group_help_id">
+        <item android:title="@string/help"
+            android:icon="@mipmap/help"
+            android:id="@+id/nav_item_help" />
+    </group>
+    <group android:id="@+id/group_about" >
+        <item android:title="@string/about"
+            android:id="@+id/nav_item_about"
+            android:icon="@mipmap/about" />
+    </group>
+    <group android:id="@+id/group_logout" >
+        <item android:title="@string/logout"
+            android:id="@+id/nav_item_logout"
+            android:icon="@mipmap/logout" />
+    </group>
+
+
+</menu>

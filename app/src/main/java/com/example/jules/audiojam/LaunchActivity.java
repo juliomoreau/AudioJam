@@ -11,6 +11,6 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
         ImageView img= (ImageView) findViewById(R.id.imageView4);
-        img.setImageResource(R.drawable.logo_hq_web);
+        img.setImageResource(R.drawable.logohqweb);
     }
 }
