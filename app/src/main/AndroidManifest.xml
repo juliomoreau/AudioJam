@@ -39,8 +39,17 @@
 
 
         <!-- Activités en lien avec le menu swipe droit -->
-        <!-- Options de l'application -->
-        <activity android:name=".AppSettingsActivity"></activity>
+            <!-- My playlists -->
+            <activity android:name=".PlaylistActivity"></activity>
+            <!-- Join/Create playlist -->
+            <activity android:name=".AddJoinPlaylistActivity"></activity>
+            <!-- Options de l'application -->
+            <activity android:name=".AppSettingsActivity"></activity>
+            <!-- Help -->
+            <activity android:name=".HelpActivity"></activity>
+            <!-- About -->
+            <activity android:name=".AboutActivity"></activity>
+
     </application>
 
 </manifest>

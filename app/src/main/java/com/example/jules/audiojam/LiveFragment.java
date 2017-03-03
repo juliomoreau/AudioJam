@@ -20,7 +20,7 @@ import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 public class LiveFragment extends Fragment {
 
-    private static final String API_KEY = "AIzaSyBvPumEkyjBtjjEKAWECHbEEk7RTGo3ZNU";
+    private static final String API_KEY = "AIzaSyAnhCNVBVq-j3sBkhBZUDW8TVlXIjSX648";
     private static String VIDEO_ID = "a4NT5iBFuZs";
 
 
