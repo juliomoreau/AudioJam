@@ -57,17 +57,36 @@
         android:layout_height="match_parent"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/playlist_mainview">
+            android:id="@+id/playlist_mainview"
+            android:orientation="vertical"
+            android:padding="10dp">
 
             <TextView
-                android:text="TextView"
+                android:text="@string/helptitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+            <TextView
+                android:text="@string/helpbody"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView7"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:padding="10dp" />
+
+            <TextView
+                android:text="@string/helplink"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/pmainview_txt1" />
-        </FrameLayout>
+                android:id="@+id/pmainview_txt1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:padding="10dp" />
+        </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton

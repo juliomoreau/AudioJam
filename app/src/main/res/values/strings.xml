@@ -13,7 +13,7 @@
     <string name="action_sign_in_google">Se connecter avec Google</string>
     <string name="action_sign_in_short">Connecter</string>
     <string name="error_invalid_email">Cette adresse mail n\'est pas valable</string>
-    <string name="error_invalid_password">Le mot de passe est trop court</string>
+    <string name="minimum_password">Le mot de passe est trop court</string>
     <string name="error_incorrect_password">Mot de passe incorrect</string>
     <string name="error_field_required">Ce champ est requis</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
@@ -29,6 +29,7 @@
     <string name="welcome">Welcome</string>
     <string name="btn_logout">LOGOUT</string>
     <string name="name">Fullname</string>
+    <string name="auth_failed">Failed to login</string>
 
 
 
@@ -48,5 +49,27 @@
     <string name="logout">Log out</string>
     <string name="search">Search for a title:</string>
 
+    <string name="aboutapptitle">About the app:</string>
+    <string name="aboutapp">This app was originally developped for a student project. The aim is to create a "full" java app for Android.
+    \nWe are in no way content owners and do not claim rights or monitization from the use of this app.
+    \nThis app is still in development.</string>
+    <string name="aboutappauthor">About the creators:</string>
+    <string name="aboutauthor">The creators are 4th year students at HEI engineering school.
+    \nJules Moreau
+    \nJoseph Sallembien</string>
+
+    <string name="helptitle">For information:</string>
+    <string name="helpbody">Help info here</string>
+    <string name="helplink">link to website</string>
+
+    
+    <string name="join">Join a playlist:</string>
+    <string name="newpl">Create a playlist:</string>
+    <string name="token">Enter a token:</string>
+    <string name="QRCode">Scan a QR Code:</string>
+    <string name="inputname">Enter a name:</string>
+    <string name="cover">Choose a cover:</string>
+    <string name="visibility">Choose a visibility</string>
+    <string name="validate">Confirm</string>
 
 </resources>

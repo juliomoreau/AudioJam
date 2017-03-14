@@ -1,6 +1,8 @@
 package com.example.jules.audiojam;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,7 +13,15 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
 import com.example.jules.audiojam.GoToImplementor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     GoToImplementor mGTImpl = new GoToImplementor();
     public final static String EXTRA = "com.example.domicile.finaltesting.MESSAGE";
 
+    ListView cominglist;
+    ListView pastlist;
+    ListView walllist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +82,35 @@ public class MainActivity extends AppCompatActivity {
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.app_name,R.string.app_name);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
+
+        //Setting up the onclicklistener for the floating action button (fab)
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        List<String> arraylist_live = new ArrayList<String>();
+
+        //Creating the arraylist to put into the views
+        arraylist_live.add("Swaggy 1");
+        arraylist_live.add("Swaggy 2");
+
+        ArrayAdapter<String> aAdapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_list_item_1, arraylist_live
+        );
+
+        //Setting ListViews and Buttons
+        cominglist = (ListView) findViewById(R.id.listComing);
+        pastlist = (ListView) findViewById(R.id.listHistory);
+        walllist = (ListView) findViewById(R.id.listWall);
+        Button btn1 = (Button) findViewById(R.id.btnComing);
+        Button btn2 = (Button) findViewById(R.id.btnHistory);
+        Button btn3 = (Button) findViewById(R.id.btnWall);
+
+        //Making the ListViews Gone
     }
 
 
