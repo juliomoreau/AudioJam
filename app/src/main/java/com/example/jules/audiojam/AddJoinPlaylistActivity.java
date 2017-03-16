@@ -37,6 +37,8 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //TODO: Integrate the storage for the cover and it's database String equivalent (path-to-image)
+
         final Context basecontext = this;
 
         //Setting up the storage
@@ -92,10 +94,13 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
         btnCreateP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //TODO: Recuperate the creator's id and feed it to the database
+                //TODO: Create a database child with the current next playlistID available and use it
+                //TODO: Integrate the use of stored images for covers
                 String baskinrobins = visibility.getSelectedItem().toString();
                 String chuckNorris = editTxtName.getText().toString();
                 String pathtoimage = "TODO";
-                int playlistID = 0;
+                int playlistID = 1;
 
                 if (chuckNorris.equals("") || baskinrobins.equals("")){
                     Toast alert = Toast.makeText(basecontext, "Please fill the blanks", Toast.LENGTH_LONG);

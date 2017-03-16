@@ -104,10 +104,11 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mGTImpl.gotoAddJoinPlaylist(v);
             }
         });
 
+        //TODO: Create the lists for the coming, past and wall through database insertion (might need the use of interfaces with fragments)
         List<String> arraylist_live = new ArrayList<String>();
 
         //Creating the arraylist to put into the views
