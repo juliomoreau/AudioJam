@@ -18,21 +18,36 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".SignupActivity"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <action android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LaunchActivity"/>
-        <activity android:name=".PlaylistActivity"/>
-        <activity android:name=".AboutActivity"/>
-        <activity android:name=".AddJoinPlaylistActivity"/>
-        <activity android:name=".HelpActivity"/>
-        <activity android:name=".AppSettingsActivity"/>
-        <activity android:name=".LoginActivity"/>
-        <activity android:name=".SignupActivity"/>
+
+        <!-- Activité principale -->
+        <activity android:name=".MainActivity">
+        </activity>
+        <activity android:name=".LaunchActivity"></activity>
+
+        <!-- Activités en lien avec le menu swipe droit -->
+        <!-- My playlists -->
+        <activity android:name=".PlaylistActivity"></activity>
+        <!-- Join/Create playlist -->
+        <activity android:name=".AddJoinPlaylistActivity"></activity>
+        <!-- Options de l'application -->
+        <activity android:name=".AppSettingsActivity"></activity>
+        <!-- Help -->
+        <activity android:name=".HelpActivity"></activity>
+        <!-- About -->
+        <activity android:name=".AboutActivity"></activity>
+
         <activity android:name="adapter.YoutubeViewer"/>
     </application>
 

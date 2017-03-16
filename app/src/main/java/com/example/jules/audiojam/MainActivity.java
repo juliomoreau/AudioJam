@@ -19,6 +19,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.example.jules.audiojam.GoToImplementor;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     GoToImplementor mGTImpl = new GoToImplementor();
     public final static String EXTRA = "com.example.domicile.finaltesting.MESSAGE";
 
+    private FirebaseAuth.AuthStateListener authListener;
+    private FirebaseAuth auth;
+
     ListView cominglist;
     ListView pastlist;
     ListView walllist;
@@ -39,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //get firebase auth instance
+        auth = FirebaseAuth.getInstance();
 
         //Setup DrawerLayout and NavigationView
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -71,7 +79,15 @@ public class MainActivity extends AppCompatActivity {
                     mGTImpl.gotoAbout(mDrawerLayout);
                 }
                 if (menuItem.getItemId() == R.id.nav_item_logout){
-                    mGTImpl.gotoLogout(mDrawerLayout);
+                    signOut();
+                    //get current user
+                    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if (user == null) {
+                        // user auth state is changed - user is null
+                        // launch login activity
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        finish();
+                    }
                 }
                 return false;
             }
@@ -113,5 +129,9 @@ public class MainActivity extends AppCompatActivity {
         //Making the ListViews Gone
     }
 
+    //sign out method
+    public void signOut() {
+        auth.signOut();
+    }
 
 }
