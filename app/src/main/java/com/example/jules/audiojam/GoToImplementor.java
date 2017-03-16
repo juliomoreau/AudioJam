@@ -3,6 +3,9 @@ package com.example.jules.audiojam;
 import android.content.Intent;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 /**
  * Created by domicile on 25/02/2017.
  */
@@ -22,7 +25,9 @@ public class GoToImplementor
 
     public void gotoAddJoinPlaylist(View view){
         Intent intent = new Intent(view.getContext(), AddJoinPlaylistActivity.class);
-        intent.putExtra(MainActivity.EXTRA, "ici entrer la valeur de l'utilisateur (on pourra récup les infos en direct de la même façon");
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String userid = user.getUid();
+        intent.putExtra(MainActivity.EXTRA, userid);
         view.getContext().startActivity(intent);
     }
 

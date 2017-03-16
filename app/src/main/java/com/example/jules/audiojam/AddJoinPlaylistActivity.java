@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,8 +15,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -34,12 +38,15 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
     private StorageReference mStorageRef;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference mDatabaseRef;
+    int playlistID;
+    String splaylistID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //TODO: Integrate the storage for the cover and it's database String equivalent (path-to-image)
 
         final Context basecontext = this;
+        final String userID = getIntent().getStringExtra(MainActivity.EXTRA);
 
         //Setting up the storage
         mStorageRef = storage.getReference();
@@ -48,6 +55,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
         //Setting up the RTDatabase
         mDatabaseRef = database.getReference();
+        DatabaseReference pIDRef = mDatabaseRef.child("currentplaylistID");
 
         setContentView(R.layout.activity_add_join_playlist);
 
@@ -85,22 +93,30 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
                 /*HERE SHOULD BE CALLED:
                 * String pathtoimage = newRef.getName();
-                *
-                * SHOULD ALSO BE FOUND:
-                * int playlistID = mDatabaseRef.child("values/playlist").getValue;
                 */
 
+        //Creating a listener for change in the database for the currentplaylistID
+        ValueEventListener newidlistener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                splaylistID =dataSnapshot.getValue().toString();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        pIDRef.addValueEventListener(newidlistener);
 
+        //Create a listener (and writer) for confirmation and creation of a new playlist
         btnCreateP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Recuperate the creator's id and feed it to the database
                 //TODO: Create a database child with the current next playlistID available and use it
                 //TODO: Integrate the use of stored images for covers
                 String baskinrobins = visibility.getSelectedItem().toString();
                 String chuckNorris = editTxtName.getText().toString();
                 String pathtoimage = "TODO";
-                int playlistID = 1;
+                playlistID = Integer.parseInt(splaylistID);
 
                 if (chuckNorris.equals("") || baskinrobins.equals("")){
                     Toast alert = Toast.makeText(basecontext, "Please fill the blanks", Toast.LENGTH_LONG);
@@ -108,14 +124,16 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
                 else{
                     if (baskinrobins.equals("public")){
-                        Playlist playlist = new Playlist(chuckNorris, pathtoimage, true);
+                        Playlist playlist = new Playlist(chuckNorris, pathtoimage, true, userID);
                         String SpID = String.valueOf(playlistID++);
                         mDatabaseRef.child("playlists").child(SpID).setValue(playlist);
+                        mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
                     }
                     if (baskinrobins.equals("private")){
-                        Playlist playlist = new Playlist(chuckNorris, pathtoimage, false);
+                        Playlist playlist = new Playlist(chuckNorris, pathtoimage, false, userID);
                         String SpID = String.valueOf(playlistID++);
                         mDatabaseRef.child("playlists").child(SpID).setValue(playlist);
+                        mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
                     }
                 }
             }

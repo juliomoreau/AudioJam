@@ -13,20 +13,20 @@ public class Playlist {
 
     //TODO: create the missing properties (1-String path-to-image) and add to constructors
 
-    private String name;
-    private boolean visibility;
-    private String pathtoimage;
-    private Map<String, Integer> musicList;
-    private List<String> modList;
-
+    public String name;
+    public boolean visibility;
+    public String pathtoimage;
+    public Map<String, Integer> musicList;
+    public List<String> modList;
 
     public Playlist(){}
 
-    public Playlist(String name, String pathtoimage, boolean visibility){
+    public Playlist(String name, String pathtoimage, boolean visibility, String userID){
 
         //TODO: once addjoinplaylistactivity done take these creators out and insert the parameters in the constructor
+        //TODO: find value to insert as first music or none if possible
         List<String> modlist = new ArrayList<>();
-        modlist.add("CREATOR ID HERE");
+        modlist.add(userID);
         Map<String, Integer> musiclist = new HashMap<>();
         musiclist.put("No song", 1);
 
@@ -35,5 +35,45 @@ public class Playlist {
         this.visibility=visibility;
         this.modList= modlist;
         this.musicList=musiclist;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(boolean visibility) {
+        this.visibility = visibility;
+    }
+
+    public String getPathtoimage() {
+        return pathtoimage;
+    }
+
+    public void setPathtoimage(String pathtoimage) {
+        this.pathtoimage = pathtoimage;
+    }
+
+    public Map<String, Integer> getMusicList() {
+        return musicList;
+    }
+
+    public void setMusicList(Map<String, Integer> musicList) {
+        this.musicList = musicList;
+    }
+
+    public List<String> getModList() {
+        return modList;
+    }
+
+    public void setModList(List<String> modList) {
+        this.modList = modList;
     }
 }
