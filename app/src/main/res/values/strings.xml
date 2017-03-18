@@ -51,12 +51,12 @@
 
     <string name="aboutapptitle">About the app:</string>
     <string name="aboutapp">This app was originally developped for a student project. The aim is to create a "full" java app for Android.
-    \nWe are in no way content owners and do not claim rights or monitization from the use of this app.
-    \nThis app is still in development.</string>
+    \n\nWe are in no way content owners and do not claim rights or monitization from the use of this app.
+    \n\nThis app is still in development.</string>
     <string name="aboutappauthor">About the creators:</string>
     <string name="aboutauthor">The creators are 4th year students at HEI engineering school.
-    \nJules Moreau
-    \nJoseph Sallembien</string>
+    \n\nJules Moreau
+    \n\nJoseph Sallembien</string>
 
     <string name="helptitle">For information:</string>
     <string name="helpbody">Help info here</string>

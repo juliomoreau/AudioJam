@@ -116,8 +116,7 @@ public class MainActivity extends AppCompatActivity {
         arraylist_live.add("Swaggy 2");
 
         ArrayAdapter<String> aAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, arraylist_live
-        );
+                this, android.R.layout.simple_list_item_1, arraylist_live);
 
         //Setting ListViews and Buttons
         cominglist = (ListView) findViewById(R.id.listComing);

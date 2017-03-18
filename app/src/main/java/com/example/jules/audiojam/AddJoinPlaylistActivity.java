@@ -111,8 +111,11 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
         btnJoinP.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //TODO: Create a Method to verify join of playlist (does exist? is joinable?
-                // if yes to both then: add id to list of playlist to user) TOKEN=CRYPTED OR MODIFIED ID
+                //TODO: Create a Method to verify join of playlist (does exist? is joinable? TOKEN=CRYPTED OR MODIFIED ID
+
+                /*
+                There is a current issue where it is necessary to click twice to join a playlist (find a workaround)
+                 */
 
                 //TODO previous method that stocks in memory the QRCODE? or else integrated method inside the onclick method
                 String jackiechan =editTxtToken.getText().toString();
@@ -130,12 +133,11 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                 if (jackiechan.equals("")) {
                     Toast toast = Toast.makeText(basecontext, "Please enter the token or flash the QRCode", Toast.LENGTH_LONG);
                     toast.show();
-
                 }
                 else{
 
                     if(isvisible==true) {
-                    mDatabaseRef.child("UserAcces").child(userID).child(jackiechan).setValue(1);
+                        mDatabaseRef.child("UserAcces").child(userID).child(jackiechan).setValue(1);
                         Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_LONG).show();
                         try{ Thread.sleep(1000); }catch(InterruptedException e){ }
                         finish();
@@ -143,7 +145,6 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                     else{
                         String value = String.valueOf(isvisible);
                         Toast.makeText(basecontext, value, Toast.LENGTH_LONG).show();
-
                     }
                 }
             }
@@ -206,6 +207,5 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
             }
         });
         */
-
     }
 }
