@@ -40,6 +40,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     int playlistID;
     String splaylistID;
+    boolean isvisible;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,13 +116,34 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
                 //TODO previous method that stocks in memory the QRCODE? or else integrated method inside the onclick method
                 String jackiechan =editTxtToken.getText().toString();
+                DatabaseReference ref = mDatabaseRef.child("playlists").child(jackiechan).child("visibility");
+                ref.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        isvisible= (boolean) dataSnapshot.getValue();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
                 if (jackiechan.equals("")) {
-                    Toast toast = Toast.makeText(basecontext, "Please enter the token or flash th QRCode", Toast.LENGTH_LONG);
+                    Toast toast = Toast.makeText(basecontext, "Please enter the token or flash the QRCode", Toast.LENGTH_LONG);
                     toast.show();
+
                 }
                 else{
-                    if(mDatabaseRef.child("playlists").child(jackiechan).child("visibility").equals(true)) {
+
+                    if(isvisible==true) {
                     mDatabaseRef.child("UserAcces").child(userID).child(jackiechan).setValue(1);
+                        Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_LONG).show();
+                        try{ Thread.sleep(1000); }catch(InterruptedException e){ }
+                        finish();
+                    }
+                    else{
+                        String value = String.valueOf(isvisible);
+                        Toast.makeText(basecontext, value, Toast.LENGTH_LONG).show();
+
                     }
                 }
             }
@@ -156,6 +178,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                         mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
                     }
                     Toast.makeText(basecontext, "Playlist successfully created", Toast.LENGTH_LONG).show();
+                    try{ Thread.sleep(1000); }catch(InterruptedException e){ }
                     finish();
                 }
             }
