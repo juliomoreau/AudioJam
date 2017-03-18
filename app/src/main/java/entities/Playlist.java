@@ -14,6 +14,7 @@ public class Playlist {
     //TODO: create the missing properties (1-String path-to-image) and add to constructors
 
     public String name;
+    public String token;
     public boolean visibility;
     public String pathtoimage;
     public Map<String, Integer> musicList;
@@ -37,6 +38,13 @@ public class Playlist {
         this.musicList=musiclist;
     }
 
+    public void addMod(String userID){
+        this.modList.add(userID);
+    }
+
+    public void addMusic(String music){
+        this.musicList.put(music,1);
+    }
     public String getName() {
         return name;
     }

@@ -79,7 +79,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
         final Spinner visibility = (Spinner) findViewById(R.id.spinnerVisibility);
 
         //Setting the EditTexts
-        EditText editTxtToken = (EditText) findViewById(R.id.inputtoken);
+        final EditText editTxtToken = (EditText) findViewById(R.id.inputtoken);
         final EditText editTxtName = (EditText) findViewById(R.id.inputName);
 
         //Filling the spinner
@@ -107,19 +107,39 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
         };
         pIDRef.addValueEventListener(newidlistener);
 
+        btnJoinP.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //TODO: Create a Method to verify join of playlist (does exist? is joinable?
+                // if yes to both then: add id to list of playlist to user) TOKEN=CRYPTED OR MODIFIED ID
+
+                //TODO previous method that stocks in memory the QRCODE? or else integrated method inside the onclick method
+                String jackiechan =editTxtToken.getText().toString();
+                if (jackiechan.equals("")) {
+                    Toast toast = Toast.makeText(basecontext, "Please enter the token or flash th QRCode", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                else{
+                    if(mDatabaseRef.child("playlists").child(jackiechan).child("visibility").equals(true)) {
+                    mDatabaseRef.child("UserAcces").child(userID).child(jackiechan).setValue(1);
+                    }
+                }
+            }
+        });
+
         //Create a listener (and writer) for confirmation and creation of a new playlist
         btnCreateP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Create a database child with the current next playlistID available and use it
                 //TODO: Integrate the use of stored images for covers
+                //TODO: Creation of QRCODE?
                 String baskinrobins = visibility.getSelectedItem().toString();
                 String chuckNorris = editTxtName.getText().toString();
                 String pathtoimage = "TODO";
                 playlistID = Integer.parseInt(splaylistID);
 
                 if (chuckNorris.equals("") || baskinrobins.equals("")){
-                    Toast alert = Toast.makeText(basecontext, "Please fill the blanks", Toast.LENGTH_LONG);
+                    Toast.makeText(basecontext, "Please fill the blanks", Toast.LENGTH_LONG).show();
                 }
 
                 else{
@@ -135,6 +155,8 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                         mDatabaseRef.child("playlists").child(SpID).setValue(playlist);
                         mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
                     }
+                    Toast.makeText(basecontext, "Playlist successfully created", Toast.LENGTH_LONG).show();
+                    finish();
                 }
             }
         });
