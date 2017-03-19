@@ -8,7 +8,25 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class PlaylistActivity extends AppCompatActivity {
+
+    FirebaseDatabase database= FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference();
+    DatabaseReference UserAccessRef = databaseReference.child("UserAccess");
+
+    private List<String> getPlaylistRefs(String userid){
+
+
+        List<String> listPlaylist = new ArrayList<>();
+        UserAccessRef.orderByChild(userid);
+        return listPlaylist;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,11 +44,11 @@ public class PlaylistActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String UserID = intent.getStringExtra(MainActivity.EXTRA);
-        String msg = UserID+" \nUne fois récupérée, on l'envoie à la BDD pour récupérer les playlists associées";
-        TextView txtView = (TextView) findViewById(R.id.pmainview_txt1);
-        txtView.setTextSize(10);
-        txtView.setPadding(10,30,10,10);
-        txtView.setText(msg);
+
+
+
+
+
 
         //ViewGroup mViewGroup = (ViewGroup) findViewById(R.id.playlist_mainview);
         //mViewGroup.addView(txtView);

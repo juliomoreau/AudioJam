@@ -2,124 +2,169 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/backgroundGREY_main">
 
     <TextView
-        android:text="TextView"
+        android:text="@string/add_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="normal|bold" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView6"
+            android:layout_weight="4"
+            android:text="@string/inputname"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="18sp"
+            android:gravity="center_vertical" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
             android:ems="10"
             android:id="@+id/editText"
-            android:layout_weight="1" />
+            android:layout_weight="5"
+            android:background="@drawable/editextshape"
+            android:layout_marginRight="20dp" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView6"
-            android:layout_weight="1" />
     </LinearLayout>
 
     <TextView
-        android:text="TextView"
+        android:text="@string/add_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView8"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="normal|bold" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/textView9"
+            android:layout_weight="4"
+            android:text="@string/inputname"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="18sp"
+            android:gravity="center_vertical" />
 
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
             android:ems="10"
             android:id="@+id/editText2"
-            android:layout_weight="1" />
+            android:layout_weight="5"
+            android:background="@drawable/editextshape"
+            android:layout_marginRight="20dp" />
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView9"
-            android:layout_weight="1" />
     </LinearLayout>
 
     <TextView
-        android:text="TextView"
+        android:text="@string/change_visibility"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView10"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="normal|bold" />
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp">
 
         <TextView
-            android:text="TextView"
+            android:text="@string/visibility"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView11"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:textSize="18sp"
+            android:gravity="center_vertical" />
 
         <view
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             class="android.support.v7.widget.AppCompatSpinner"
             android:id="@+id/view"
-            android:layout_weight="1" />
-
-        <Button
-            android:text="Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button4"
-            android:layout_weight="1" />
+            android:layout_weight="12"
+            android:background="@drawable/editextshape"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
 
     </LinearLayout>
 
+    <Button
+        android:text="@string/validate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:layout_gravity="left"
+        android:layout_marginLeft="20dp" />
+
     <TextView
-        android:text="TextView"
+        android:text="@string/sharing_link"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView12"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_marginTop="15dp"
+        android:textStyle="normal|bold" />
 
     <TextView
-        android:text="TextView"
-        android:layout_width="match_parent"
+        android:text="TOKEN"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView14" />
+        android:id="@+id/tokenTextView"
+        android:gravity="center"
+        android:background="@drawable/editextshape"
+        android:layout_gravity="center"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_margin="10dp"
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textSize="18sp" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/sharing_QRC"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView13"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textStyle="normal|bold" />
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/about"
-        android:id="@+id/imageView2" />
+        android:layout_height="match_parent"
+        app:srcCompat="@mipmap/placeholder_qrcode"
+        android:id="@+id/QRCodeforPlaylist"
+        android:layout_gravity="center"
+        android:layout_margin="10dp" />
 </LinearLayout>

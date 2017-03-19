@@ -72,4 +72,10 @@
     <string name="visibility">Choose a visibility</string>
     <string name="validate">Confirm</string>
 
+    <string name="add_admin">Add an admin:</string>
+    <string name="add_user">Add a friend:</string>
+    <string name="change_visibility">Change the visibility:</string>
+    <string name="sharing_link">Your sharing link:</string>
+    <string name="sharing_QRC">Your sharing QRCode:</string>
+
 </resources>

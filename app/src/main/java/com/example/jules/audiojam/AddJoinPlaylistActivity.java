@@ -115,6 +115,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
                 /*
                 There is a current issue where it is necessary to click twice to join a playlist (find a workaround)
+                Possible is creating an exterior function called just before adding values to database.
                  */
 
                 //TODO previous method that stocks in memory the QRCODE? or else integrated method inside the onclick method
@@ -171,12 +172,14 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                         String SpID = String.valueOf(playlistID++);
                         mDatabaseRef.child("playlists").child(SpID).setValue(playlist);
                         mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
+                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(1);
                     }
                     if (baskinrobins.equals("private")){
                         Playlist playlist = new Playlist(chuckNorris, pathtoimage, false, userID);
                         String SpID = String.valueOf(playlistID++);
                         mDatabaseRef.child("playlists").child(SpID).setValue(playlist);
                         mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
+                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(1);
                     }
                     Toast.makeText(basecontext, "Playlist successfully created", Toast.LENGTH_LONG).show();
                     try{ Thread.sleep(1000); }catch(InterruptedException e){ }
