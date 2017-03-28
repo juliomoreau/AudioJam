@@ -19,6 +19,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -41,6 +42,9 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
     int playlistID;
     String splaylistID;
     boolean isvisible;
+
+    private Query get(Query q){
+        return q;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +125,20 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                 //TODO previous method that stocks in memory the QRCODE? or else integrated method inside the onclick method
                 String jackiechan =editTxtToken.getText().toString();
                 DatabaseReference ref = mDatabaseRef.child("playlists").child(jackiechan).child("visibility");
+                Query q = ref.orderByValue().equalTo(true);
+                get(q);
+
+                q.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        isvisible = (boolean) dataSnapshot.getValue();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 ref.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

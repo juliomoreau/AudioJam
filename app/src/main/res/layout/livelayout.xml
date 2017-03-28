@@ -62,19 +62,62 @@
             android:background="@color/colorBackground" />
     </LinearLayout>
 
-    <ListView
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listComing" />
+        android:id="@+id/liveTableLayout">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listHistory" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/liveRow1" >
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listWall" />
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView14"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/liveRow2" >
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView15"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/liveRow3" >
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView16"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/liveRow4" >
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/textView17"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+        </TableRow>
+    </TableLayout>
 
 </LinearLayout>

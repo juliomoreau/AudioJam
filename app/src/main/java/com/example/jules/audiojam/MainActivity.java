@@ -119,9 +119,9 @@ public class MainActivity extends AppCompatActivity {
                 this, android.R.layout.simple_list_item_1, arraylist_live);
 
         //Setting ListViews and Buttons
-        cominglist = (ListView) findViewById(R.id.listComing);
-        pastlist = (ListView) findViewById(R.id.listHistory);
-        walllist = (ListView) findViewById(R.id.listWall);
+        //cominglist = (ListView) findViewById(R.id.listComing);
+        //pastlist = (ListView) findViewById(R.id.listHistory);
+        //walllist = (ListView) findViewById(R.id.listWall);
         Button btn1 = (Button) findViewById(R.id.btnComing);
         Button btn2 = (Button) findViewById(R.id.btnHistory);
         Button btn3 = (Button) findViewById(R.id.btnWall);
