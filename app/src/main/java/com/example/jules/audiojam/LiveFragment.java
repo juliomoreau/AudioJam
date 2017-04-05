@@ -57,16 +57,10 @@ public class LiveFragment extends Fragment {
 
         txt1.setText("Click a button");
         txtR1.setText("0");
-        row2.setVisibility(View.GONE);
-        row3.setVisibility(View.GONE);
-        row4.setVisibility(View.GONE);
 
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                row2.setVisibility(View.VISIBLE);
-                row3.setVisibility(View.VISIBLE);
-                row4.setVisibility(View.VISIBLE);
                 txt1.setText("ch");
                 txt2.setText("ch");
                 txt3.setText("ch");
@@ -81,9 +75,6 @@ public class LiveFragment extends Fragment {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                row2.setVisibility(View.VISIBLE);
-                row3.setVisibility(View.VISIBLE);
-                row4.setVisibility(View.VISIBLE);
                 txt1.setText("test2");
                 txt2.setText("tet");
                 txt3.setText("jkghv");
@@ -98,9 +89,6 @@ public class LiveFragment extends Fragment {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                row2.setVisibility(View.VISIBLE);
-                row3.setVisibility(View.VISIBLE);
-                row4.setVisibility(View.VISIBLE);
                 txt1.setText("test3");
                 txt2.setText("tty");
                 txt3.setText("hfj");

@@ -109,24 +109,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //TODO: Create the lists for the coming, past and wall through database insertion (might need the use of interfaces with fragments)
-        List<String> arraylist_live = new ArrayList<String>();
-
-        //Creating the arraylist to put into the views
-        arraylist_live.add("Swaggy 1");
-        arraylist_live.add("Swaggy 2");
-
-        ArrayAdapter<String> aAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, arraylist_live);
-
-        //Setting ListViews and Buttons
-        //cominglist = (ListView) findViewById(R.id.listComing);
-        //pastlist = (ListView) findViewById(R.id.listHistory);
-        //walllist = (ListView) findViewById(R.id.listWall);
         Button btn1 = (Button) findViewById(R.id.btnComing);
         Button btn2 = (Button) findViewById(R.id.btnHistory);
         Button btn3 = (Button) findViewById(R.id.btnWall);
-
-        //Making the ListViews Gone
     }
 
     //sign out method
