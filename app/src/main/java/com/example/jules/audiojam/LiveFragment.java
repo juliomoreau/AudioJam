@@ -32,10 +32,16 @@ public class LiveFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.livelayout, null);
         View v = new View(getContext());
 
-        final TextView txt1 = (TextView) rootView.findViewById(R.id.textView14);
-        final TextView txt2 = (TextView) rootView.findViewById(R.id.textView15);
-        final TextView txt3 = (TextView) rootView.findViewById(R.id.textView16);
-        final TextView txt4 = (TextView) rootView.findViewById(R.id.textView17);
+        final TextView txt1 = (TextView) rootView.findViewById(R.id.txtVNameRow1);
+        final TextView txt2 = (TextView) rootView.findViewById(R.id.txtVNameRow2);
+        final TextView txt3 = (TextView) rootView.findViewById(R.id.txtVNameRow3);
+        final TextView txt4 = (TextView) rootView.findViewById(R.id.txtVNameRow4);
+
+        final TextView txtR1 = (TextView) rootView.findViewById(R.id.txtVRateRow1);
+        final TextView txtR2 = (TextView) rootView.findViewById(R.id.txtVRateRow2);
+        final TextView txtR3 = (TextView) rootView.findViewById(R.id.txtVRateRow3);
+        final TextView txtR4 = (TextView) rootView.findViewById(R.id.txtVRateRow4);
+
 
         //TODO:INITIALIZE text on it's values or create template values.
 
@@ -49,33 +55,60 @@ public class LiveFragment extends Fragment {
         final TableRow row3 = (TableRow) rootView.findViewById(R.id.liveRow3);
         final TableRow row4 = (TableRow) rootView.findViewById(R.id.liveRow4);
 
+        txt1.setText("Click a button");
+        txtR1.setText("0");
+        row2.setVisibility(View.GONE);
+        row3.setVisibility(View.GONE);
+        row4.setVisibility(View.GONE);
+
         btn1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                row2.setVisibility(View.VISIBLE);
+                row3.setVisibility(View.VISIBLE);
+                row4.setVisibility(View.VISIBLE);
                 txt1.setText("ch");
                 txt2.setText("ch");
                 txt3.setText("ch");
                 txt4.setText("ch");
+                txtR1.setText("100");
+                txtR2.setText("100");
+                txtR3.setText("100");
+                txtR4.setText("100");
             }
         });
 
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                row2.setVisibility(View.VISIBLE);
+                row3.setVisibility(View.VISIBLE);
+                row4.setVisibility(View.VISIBLE);
                 txt1.setText("test2");
                 txt2.setText("tet");
                 txt3.setText("jkghv");
                 txt4.setText("gh");
+                txtR1.setText("100");
+                txtR2.setText("100");
+                txtR3.setText("100");
+                txtR4.setText("100");
             }
         });
 
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                row2.setVisibility(View.VISIBLE);
+                row3.setVisibility(View.VISIBLE);
+                row4.setVisibility(View.VISIBLE);
                 txt1.setText("test3");
                 txt2.setText("tty");
                 txt3.setText("hfj");
                 txt4.setText("tt");
+                txtR1.setText("100");
+                txtR2.setText("100");
+                txtR3.setText("100");
+                txtR4.setText("100");
             }
         });
 
