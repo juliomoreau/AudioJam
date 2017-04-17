@@ -20,19 +20,20 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp" />
 
-        <SearchView
+        <EditText
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:background="@color/white" />
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText2"
+            android:layout_weight="1.5"
+            android:hint="ex : fail" />
 
-        <ImageButton
-            android:layout_width="wrap_content"
-            app:srcCompat="@mipmap/search"
-            android:id="@+id/imageButton2"
-            android:layout_weight="0.01"
-            android:background="@color/colorBackground"
-            android:layout_height="wrap_content" />
+        <Button
+            android:text="Search"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button4" />
 
     </LinearLayout>
 
@@ -40,6 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.5"
-        android:id="@+id/listview_search_res" />
+        android:id="@+id/listView" />
 
 </LinearLayout>
