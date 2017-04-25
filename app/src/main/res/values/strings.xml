@@ -73,4 +73,34 @@
     <string name="lbl_forgot_password">Forgot password?</string>
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
 
+
+    <string name="helptitle">For information:</string>
+    <string name="helpbody">Help info here</string>
+    <string name="helplink">link to website</string>
+
+
+    <string name="join">Join a playlist:</string>
+    <string name="newpl">Create a playlist:</string>
+    <string name="token">Enter a token:</string>
+    <string name="QRCode">Scan a QR Code:</string>
+    <string name="inputname">Enter a name:</string>
+    <string name="cover">Choose a cover:</string>
+    <string name="visibility">Choose a visibility</string>
+    <string name="validate">Confirm</string>
+
+    <string name="add_admin">Add an admin:</string>
+    <string name="add_user">Add a friend:</string>
+    <string name="change_visibility">Change the visibility:</string>
+    <string name="sharing_link">Your sharing link:</string>
+    <string name="sharing_QRC">Your sharing QRCode:</string>
+
+    <string name="aboutapptitle">About the app:</string>
+    <string name="aboutapp">This app was originally developped for a student project. The aim is to create a "full" java app for Android.
+    \n\nWe are in no way content owners and do not claim rights or monitization from the use of this app.
+    \n\nThis app is still in development.</string>
+    <string name="aboutappauthor">About the creators:</string>
+    <string name="aboutauthor">The creators are 4th year students at HEI engineering school.
+    \n\nJules Moreau
+\n\nJoseph Sallembien</string>
+
 </resources>

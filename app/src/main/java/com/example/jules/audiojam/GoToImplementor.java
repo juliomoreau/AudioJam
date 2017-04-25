@@ -18,14 +18,14 @@ public class GoToImplementor
     //Will be called when the user clicks the corresponding menu item.
     public void gotoMyPlaylists(View view){
         Intent intent = new Intent(view.getContext(), PlaylistActivity.class);
-        intent.putExtra(MainActivity.EXTRA, "ici insérons la valeur de l'utilisateur");
+        intent.putExtra(MainActivity.EXTRA, FirebaseAuth.getInstance().getCurrentUser().getUid());
         view.getContext().startActivity(intent);
 
     }
 
     public void gotoAddJoinPlaylist(View view){
         Intent intent = new Intent(view.getContext(), AddJoinPlaylistActivity.class);
-        intent.putExtra(MainActivity.EXTRA, "ici entrer la valeur de l'utilisateur (on pourra récup les infos en direct de la même façon");
+        intent.putExtra(MainActivity.EXTRA, FirebaseAuth.getInstance().getCurrentUser().getUid());
         view.getContext().startActivity(intent);
     }
 
