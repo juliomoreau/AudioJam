@@ -23,54 +23,68 @@ public class TabFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //Inflate tabLayout and set views
-        View v = inflater.inflate(R.layout.tab_layout, null);
-        tabLayout = (TabLayout) v.findViewById(R.id.tabs);
-        viewPager = (ViewPager) v.findViewById(R.id.viewpager);
+        View v = inflater.inflate(R.layout.tab_layout, container, false);
 
-        //Setting adapter for the ViewPager
-        viewPager.setAdapter(new MyFragmentPagerAdapter(getChildFragmentManager()));
+        //if (savedInstanceState != null) {
+            // restore your state from "savedInstanceState"
+        //} else {
+            tabLayout = (TabLayout) v.findViewById(R.id.tabs);
+            viewPager = (ViewPager) v.findViewById(R.id.viewpager);
+            //viewPager.setOffscreenPageLimit(3);
 
-        //Workaround because setupWithViewPager needs Runnable
-        tabLayout.post(new Runnable() {
+            //Setting adapter for the ViewPager
+            viewPager.setAdapter(new MyFragmentPagerAdapter(getChildFragmentManager()));
+
+            //Workaround because setupWithViewPager needs Runnable
+            tabLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    tabLayout.setupWithViewPager(viewPager);
+                }
+            });
+        //}
+            return v;
+        }
+
+        class MyFragmentPagerAdapter extends FragmentPagerAdapter {
+            public MyFragmentPagerAdapter(FragmentManager fm) {
+                super(fm);
+            }
+
+            //Return fragment for position
             @Override
-            public void run() {
-                tabLayout.setupWithViewPager(viewPager);
+            public Fragment getItem(int position) {
+
+                switch (position) {
+                    case 0:
+                        return new LiveFragment();
+                    case 1:
+                        return new MusicFragment();
+                    case 2:
+                        return new OptionFragment();
+                }
+                return null;
             }
-        });
 
-        return v;
-    }
-
-    class MyFragmentPagerAdapter extends FragmentPagerAdapter {
-        public MyFragmentPagerAdapter(FragmentManager fm){ super(fm);}
-
-        //Return fragment for position
-        @Override
-        public Fragment getItem(int position){
-            switch (position){
-                case 0: return new LiveFragment();
-                case 1: return new MusicFragment();
-                case 2: return new OptionFragment();
+            @Override
+            public int getCount() {
+                return nb_items;
             }
-            return null;
-        }
 
-        @Override
-        public int getCount(){
-            return nb_items;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position){
-            switch (position){
-                case 0: return "Live";
-                case 1: return "Add Music";
-                case 2: return "Options";
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position) {
+                    case 0:
+                        return "Live";
+                    case 1:
+                        return "Add Music";
+                    case 2:
+                        return "Options";
+                }
+                return null;
             }
-            return null;
         }
-    }
 }

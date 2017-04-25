@@ -2,6 +2,7 @@ package com.example.jules.audiojam;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseRef;
     int playlistID;
     String splaylistID;
-    boolean isvisible;
+    boolean isvisible=false;
 
     private Query get(Query q){
         return q;}
@@ -52,6 +53,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
         final Context basecontext = this;
         final String userID = getIntent().getStringExtra(MainActivity.EXTRA);
+        final Handler handler = new Handler();
 
         //Setting up the storage
         mStorageRef = storage.getReference();
@@ -123,48 +125,35 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                  */
 
                 //TODO previous method that stocks in memory the QRCODE? or else integrated method inside the onclick method
-                String jackiechan =editTxtToken.getText().toString();
-                DatabaseReference ref = mDatabaseRef.child("playlists").child(jackiechan).child("visibility");
-                Query q = ref.orderByValue().equalTo(true);
-                get(q);
+                final String jackiechan =editTxtToken.getText().toString();
+                DatabaseReference ref = mDatabaseRef.child("playlists").child(jackiechan);
 
-                q.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        isvisible = (boolean) dataSnapshot.getValue();
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-                ref.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        isvisible= (boolean) dataSnapshot.getValue();
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                    }
-                });
                 if (jackiechan.equals("")) {
                     Toast toast = Toast.makeText(basecontext, "Please enter the token or flash the QRCode", Toast.LENGTH_LONG);
                     toast.show();
                 }
                 else{
 
-                    if(isvisible==true) {
-                        mDatabaseRef.child("UserAcces").child(userID).child(jackiechan).setValue(1);
-                        Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_LONG).show();
-                        try{ Thread.sleep(1000); }catch(InterruptedException e){ }
-                        finish();
-                    }
-                    else{
-                        String value = String.valueOf(isvisible);
-                        Toast.makeText(basecontext, value, Toast.LENGTH_LONG).show();
-                    }
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            final Playlist playlist = dataSnapshot.getValue(Playlist.class);
+                            isvisible = playlist.isVisibility();
+                            if(isvisible==true) {
+                                mDatabaseRef.child("UserAccess").child(userID).child(jackiechan).setValue(1);
+                                Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_LONG).show();
+                                finish();
+                            }
+                            else{
+                                String value = String.valueOf(isvisible);
+                                Toast.makeText(basecontext, value, Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
                 }
             }
         });
@@ -229,4 +218,6 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
         });
         */
     }
+
+
 }

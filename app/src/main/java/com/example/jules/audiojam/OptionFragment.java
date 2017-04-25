@@ -21,9 +21,17 @@ public class OptionFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View rootView = inflater.inflate(R.layout.livelayout, null);
+        View rootView = inflater.inflate(R.layout.optionslayout, null);
 
-        final Spinner visibility = (Spinner) rootView.findViewById(R.id.spinnerVisibility);
+
+
+        return rootView;
+    }
+
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        final Spinner visibility = (Spinner) getActivity().findViewById(R.id.spinnerVisibility);
 
         List<String> spinArray = new ArrayList<String>();
         spinArray.add("public");
@@ -33,6 +41,5 @@ public class OptionFragment extends Fragment {
         spinadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         visibility.setAdapter(spinadapter);
 
-        return rootView;
     }
 }

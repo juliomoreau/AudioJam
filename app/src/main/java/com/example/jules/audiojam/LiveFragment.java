@@ -49,11 +49,11 @@ public class LiveFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
-        FragmentManager fm = getFragmentManager();
+        /*FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ListFragment lf = new ListFragment();
         ft.replace(R.id.liveTableLayout, lf);
-        ft.commit();
+        ft.commit();*/
 
         View rootView = inflater.inflate(R.layout.livelayout, null);
         return rootView;

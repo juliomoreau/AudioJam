@@ -105,16 +105,6 @@
             android:textSize="18sp"
             android:gravity="center_vertical" />
 
-        <view
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            class="android.support.v7.widget.AppCompatSpinner"
-            android:id="@+id/view"
-            android:layout_weight="12"
-            android:background="@drawable/editextshape"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
-
     </LinearLayout>
 
     <Button
@@ -126,6 +116,15 @@
         android:textColor="@color/white"
         android:layout_gravity="left"
         android:layout_marginLeft="20dp" />
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spinnerVisibility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="12"
+        android:background="@drawable/editextshape" />
 
     <TextView
         android:text="@string/sharing_link"
