@@ -140,7 +140,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                             final Playlist playlist = dataSnapshot.getValue(Playlist.class);
                             isvisible = playlist.isVisibility();
                             if(isvisible==true) {
-                                mDatabaseRef.child("UserAccess").child(userID).child(jackiechan).setValue(1);
+                                mDatabaseRef.child("UserAccess").child(userID).child(jackiechan).setValue(jackiechan);
                                 Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_LONG).show();
                                 finish();
                             }
@@ -179,14 +179,14 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                         String SpID = String.valueOf(playlistID++);
                         mDatabaseRef.child("playlists").child(SpID).setValue(playlist);
                         mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
-                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(1);
+                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(splaylistID);
                     }
                     if (baskinrobins.equals("private")){
                         Playlist playlist = new Playlist(chuckNorris, pathtoimage, false, userID);
                         String SpID = String.valueOf(playlistID++);
                         mDatabaseRef.child("playlists").child(SpID).setValue(playlist);
                         mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
-                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(1);
+                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(splaylistID);
                     }
                     Toast.makeText(basecontext, "Playlist successfully created", Toast.LENGTH_LONG).show();
                     try{ Thread.sleep(1000); }catch(InterruptedException e){ }

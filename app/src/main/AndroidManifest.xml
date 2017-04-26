@@ -48,7 +48,6 @@
         <!-- About -->
         <activity android:name=".AboutActivity"></activity>
 
-        <activity android:name="adapter.YoutubeViewer"/>
     </application>
 
 </manifest>

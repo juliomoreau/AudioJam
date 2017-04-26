@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,9 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,24 +45,55 @@ import entities.Music;
  */
 
 public class LiveFragment extends Fragment {
-
+    private static final String API_KEY = "AIzaSyAnhCNVBVq-j3sBkhBZUDW8TVlXIjSX648";
+    private static String VIDEO_ID = "a4NT5iBFuZs";
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.livelayout, container, false);
 
-        /*FragmentManager fm = getFragmentManager();
+         /*FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ListFragment lf = new ListFragment();
         ft.replace(R.id.liveTableLayout, lf);
         ft.commit();*/
 
-        View rootView = inflater.inflate(R.layout.livelayout, null);
+        YouTubePlayerSupportFragment youTubePlayerFragment = YouTubePlayerSupportFragment.newInstance();
+
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.add(R.id.youtube_layout, youTubePlayerFragment).commit();
+
+        //Initialise le player
+        youTubePlayerFragment.initialize(API_KEY, new YouTubePlayer.OnInitializedListener() {
+
+
+            @Override
+            public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
+                if (!wasRestored) {
+                    player.setPlayerStyle(YouTubePlayer.PlayerStyle.DEFAULT);
+                    player.loadVideo(VIDEO_ID);
+                }
+            }
+
+            // YouTubeプレーヤーの初期化失敗
+            @Override
+            public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult error) {
+                // YouTube error
+                String errorMessage = error.toString();
+                Toast.makeText(getActivity(), errorMessage, Toast.LENGTH_LONG).show();
+                Log.d("errorMessage:", errorMessage);
+            }
+        });
         return rootView;
+
     }
 
+
+    @Nullable
+    @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 

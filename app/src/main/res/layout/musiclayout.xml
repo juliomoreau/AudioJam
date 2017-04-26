@@ -11,28 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp">
 
-        <TextView
-            android:text="@string/search"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:id="@+id/search_txtview"
-            android:layout_weight="1.5"
-            android:gravity="center_vertical"
-            android:paddingLeft="10dp" />
-
-        <SearchView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:background="@color/white" />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            app:srcCompat="@mipmap/search"
-            android:id="@+id/imageButton2"
-            android:layout_weight="0.01"
-            android:background="@color/colorBackground"
-            android:layout_height="wrap_content" />
+        <com.mancj.materialsearchbar.MaterialSearchBar
+            app:mt_speechMode="true"
+            app:mt_hint="Custom hint"
+            app:mt_maxSuggestionsCount="10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sB" />
 
     </LinearLayout>
 
@@ -40,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.5"
-        android:id="@+id/listview_search_res" />
+        android:id="@+id/listView" />
+
 
 </LinearLayout>
