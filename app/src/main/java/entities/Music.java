@@ -12,17 +12,17 @@ public class Music {
 
     private String name;
     private Image cover;
-    private int rating;
-    private String token;
+    private int score;
+    private String urltoken;
 
-    public Music(String ytLink){
-        this.token = ytLink;
+    public Music(String urltoken){
+        this.urltoken = urltoken;
     }
 
-    public Music(String name, int rating, String ytLink){
+    public Music(String name, int score, String urltoken){
         this.name = name;
-        this.rating = rating;
-        this.token = ytLink;
+        this.score = score;
+        this.urltoken = urltoken;
     }
 
     public String getName() {
@@ -42,18 +42,18 @@ public class Music {
     }
 
     public int getRating() {
-        return rating;
+        return score;
     }
 
     public void setRating(int rating) {
-        this.rating = rating;
+        this.score = rating;
     }
 
     public String getToken() {
-        return token;
+        return urltoken;
     }
 
     public void setToken(String token) {
-        this.token = token;
+        this.urltoken = token;
     }
 }

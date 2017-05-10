@@ -17,7 +17,7 @@ public class Playlist {
     public String token;
     public boolean visibility;
     public String pathtoimage;
-    public Map<String, Integer> musicList;
+    public List<Music> musicList;
     public List<String> modList;
 
     public Playlist(){}
@@ -28,8 +28,8 @@ public class Playlist {
         //TODO: find value to insert as first music or none if possible
         List<String> modlist = new ArrayList<>();
         modlist.add(userID);
-        Map<String, Integer> musiclist = new HashMap<>();
-        musiclist.put("No song", 1);
+        List<Music> musiclist = new ArrayList<>();
+        musiclist.add(new Music("Name of song", 0, "tokenvalue"));
 
         this.name=name;
         this.pathtoimage=pathtoimage;
@@ -42,8 +42,8 @@ public class Playlist {
         this.modList.add(userID);
     }
 
-    public void addMusic(String music){
-        this.musicList.put(music,1);
+    public void addMusic(Music music){
+        this.musicList.add(music);
     }
     public String getName() {
         return name;
@@ -69,11 +69,11 @@ public class Playlist {
         this.pathtoimage = pathtoimage;
     }
 
-    public Map<String, Integer> getMusicList() {
+    public List<Music> getMusicList() {
         return musicList;
     }
 
-    public void setMusicList(Map<String, Integer> musicList) {
+    public void setMusicList(List<Music> musicList) {
         this.musicList = musicList;
     }
 

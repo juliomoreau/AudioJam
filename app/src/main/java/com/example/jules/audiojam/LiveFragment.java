@@ -26,6 +26,8 @@ import android.widget.Toast;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerSupportFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +40,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
+import adapter.MusicAdapter;
 import entities.Music;
 
 /**
@@ -49,6 +52,16 @@ public class LiveFragment extends Fragment {
     private static String VIDEO_ID = "a4NT5iBFuZs";
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
+
+    String UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    String mycurrentplaylistID;
+    List<Music> musicList = new ArrayList<>(5);
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = database.getReference();
+    DatabaseReference UserAccessRef = databaseReference.child("UserAccess");
+    DatabaseReference mycurrentplaylistIDRef = UserAccessRef.child(UserId).child("currentplaylist");
+    DatabaseReference musiclistref = databaseReference.child("playlists").child(mycurrentplaylistID).child("musicList");
 
     @Nullable
     @Override
@@ -78,7 +91,7 @@ public class LiveFragment extends Fragment {
                 }
             }
 
-            // YouTubeプレーヤーの初期化失敗
+            // YouTube Initialization failure
             @Override
             public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult error) {
                 // YouTube error
@@ -87,6 +100,18 @@ public class LiveFragment extends Fragment {
                 Log.d("errorMessage:", errorMessage);
             }
         });
+
+
+        ValueEventListener newidlistener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mycurrentplaylistID =dataSnapshot.getValue().toString();
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        };
+        mycurrentplaylistIDRef.addValueEventListener(newidlistener);
         return rootView;
 
     }
@@ -103,6 +128,35 @@ public class LiveFragment extends Fragment {
         Button btn1 = (Button) getView().findViewById(R.id.btnComing);
         Button btn2 = (Button) getView().findViewById(R.id.btnHistory);
         Button btn3 = (Button) getView().findViewById(R.id.btnWall);
+
+        final ValueEventListener livevalueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot listSnapshot: dataSnapshot.getChildren()) {
+                    Music music = listSnapshot.getValue(Music.class);
+                    musicList.add(music);
+                    Log.e("tag", music.toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
+       /* btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                musiclistref.addValueEventListener(livevalueEventListener);
+                Log.e("val of list", musicList.toString());
+                /*ListView listView = (ListView) getView().findViewById(R.id.listviewlive);
+                MusicAdapter musicAdapter = new MusicAdapter(getContext(), getActivity(), musicList);
+                listView.setAdapter(musicAdapter);
+            }
+        });*/
+    }
+}
 
         /*
         btn1.setOnClickListener(new View.OnClickListener(){
@@ -222,5 +276,4 @@ public class LiveFragment extends Fragment {
         return tbR;
     }
     */
-    }
-}
+

@@ -1,10 +1,14 @@
 package com.example.jules.audiojam;
 
+import android.app.ActionBar;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -28,17 +32,21 @@ import entities.Playlist;
 
 public class PlaylistActivity extends AppCompatActivity {
 
-    FirebaseDatabase database= FirebaseDatabase.getInstance();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = database.getReference();
     DatabaseReference UserAccessRef = databaseReference.child("UserAccess");
+    ArrayList<String> listPlaylist = new ArrayList<>(10);
+    ArrayList<Playlist> pl = new ArrayList<>(10);
 
+    //TODO: In order to function, this needs an asynchronous task to populate. First, create the layout and show it,
+    // then search and populate
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playlist);
 
         ImageButton exit = (ImageButton) findViewById(R.id.imageButton);
-        exit.setOnClickListener(new View.OnClickListener(){
+        exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -47,64 +55,142 @@ public class PlaylistActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        String UserID = intent.getStringExtra(MainActivity.EXTRA);
+        final String UserID = intent.getStringExtra(MainActivity.EXTRA);
 
-        List<String> ls = getPlaylistRefs(UserID);
-        List<Playlist> pl = getUserAccessPlaylist(ls);
+        Button b = (Button) findViewById(R.id.buttonconfirm);
+        b.setText("click here");
 
-        ListView lv=(ListView) findViewById(R.id.listview);
 
-        PlaylistAdapter adapter = new PlaylistAdapter(getBaseContext(), this, pl);
-        lv.setAdapter(adapter);
-        //ViewGroup mViewGroup = (ViewGroup) findViewById(R.id.playlist_mainview);
-        //mViewGroup.addView(txtView);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                    ArrayList<String> lp = getPlaylistRefs(UserID);             //Returns an empty list
+                    Log.e("Tag", "onCreate: "+lp);
+                    try {
+                        ArrayList<Playlist> pl = getUserAccessPlaylist(lp); //Retuns an empy list
+                        ListView lv=(ListView) findViewById(R.id.listview);
+                        PlaylistAdapter adapter = new PlaylistAdapter(getBaseContext(), getParent(), pl);
+                        lv.setAdapter(adapter);
+                    }catch (Exception e){}
+                }
+
+        });
+
     }
 
-    private List<String> getPlaylistRefs(String userid){
+
+    private ArrayList<String> getPlaylistRefs(String userid){
         //TODO: possible change with having a list of playslists rather than simply list of IDs (heavier and slower)
         // but easier and more complete
-
-        final List<String> listPlaylist = new ArrayList<>();
         DatabaseReference ref = UserAccessRef.child(userid);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        ValueEventListener getlistlistener =  new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                IdPlaylist idPlaylist = dataSnapshot.getValue(IdPlaylist.class);
-                for (int i=0; i<idPlaylist.getToken().size();i++){ /*Points to a null object reference idPlaylist not found??*/
-                    listPlaylist.set(i, idPlaylist.getToken().get(i));
+                for (DataSnapshot listSnapshot: dataSnapshot.getChildren()){
+                    String val = listSnapshot.getKey();
+                    listPlaylist.add(val);
+                    Log.e("tag", val );
                 }
+
+                //Method works in debug line per line. Else returns empty list
+
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+
+        };
+        ref.addValueEventListener(getlistlistener);
         return listPlaylist;
     }
 
-    private List<Playlist> getUserAccessPlaylist(List<String> stringList){
+    private ArrayList<Playlist> getUserAccessPlaylist(List<String> stringList){
 
-        final List<Playlist> pl = new ArrayList<>();
+
         DatabaseReference ref = databaseReference.child("playlists");
+        ValueEventListener valueEventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Playlist p = dataSnapshot.getValue(Playlist.class);
+                pl.add(p);
+                Toast.makeText(getBaseContext(), p.getName(), Toast.LENGTH_SHORT);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+
         for (int i=0; i<stringList.size();i++){
             DatabaseReference dref =ref.child(stringList.get(i));
+            dref.addValueEventListener(valueEventListener);
+        }
+        return pl;
+    }
 
-            dref.addListenerForSingleValueEvent(new ValueEventListener() {
+ /*
+    private class GetPlaylistsTask extends AsyncTask<String, Void, List<Playlist>> {
+
+        @Override
+        protected List<Playlist> doInBackground(String... params) {
+            DatabaseReference ref = UserAccessRef.child(String.valueOf(params));
+
+            ref.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    Playlist p = dataSnapshot.getValue(Playlist.class);
-                    pl.add(p);
+                    for (DataSnapshot listSnapshot : dataSnapshot.getChildren()) {
+                        String val = listSnapshot.getKey();
+                        listPlaylist.add(val);
+
+                        try {
+                            Thread.sleep(5000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+
+                        DatabaseReference dref = databaseReference.child("playlists").child(val);
+                        dref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                Playlist p = dataSnapshot.getValue(Playlist.class);
+                                pl.add(p);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                            }
+                        });
+
+                    }
                 }
 
+                //Method works in debug line per line. Else returns empty list
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-
                 }
             });
 
+            return pl;
         }
 
-        return pl;
-    }
+            @Override
+            protected void onPostExecute (List<Playlist> playlistresult){
+
+
+            }
+
+            @Override
+            protected void onPreExecute () {
+            }
+
+            @Override
+            protected void onProgressUpdate (Void...values){
+            }
+
+        }
+*/
 }

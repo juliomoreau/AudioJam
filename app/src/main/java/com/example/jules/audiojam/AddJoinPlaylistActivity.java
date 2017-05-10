@@ -141,7 +141,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                             isvisible = playlist.isVisibility();
                             if(isvisible==true) {
                                 mDatabaseRef.child("UserAccess").child(userID).child(jackiechan).setValue(jackiechan);
-                                Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_LONG).show();
+                                Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                             else{
