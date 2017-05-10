@@ -2,6 +2,7 @@ package com.example.jules.audiojam;
 
 import android.content.Context;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,7 +31,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import entities.Playlist;
+
+
 public class AddJoinPlaylistActivity extends AppCompatActivity {
+
 
     FirebaseStorage storage = FirebaseStorage.getInstance();
     private StorageReference mStorageRef;
@@ -49,6 +53,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
         final Context basecontext = this;
         final String userID = getIntent().getStringExtra(MainActivity.EXTRA);
+        final Handler handler = new Handler();
 
         //Setting up the storage
         mStorageRef = storage.getReference();
@@ -120,7 +125,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                  */
 
                 //TODO previous method that stocks in memory the QRCODE? or else integrated method inside the onclick method
-               final  String jackiechan =editTxtToken.getText().toString();
+                final String jackiechan =editTxtToken.getText().toString();
                 DatabaseReference ref = mDatabaseRef.child("playlists").child(jackiechan);
 
                 if (jackiechan.equals("")) {
@@ -129,29 +134,27 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                 }
                 else{
 
-                    ref.addValueEventListener(new ValueEventListener() {
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            Playlist playlist= dataSnapshot.getValue(Playlist.class);
-                            isvisible= playlist.isVisibility();
+                            final Playlist playlist = dataSnapshot.getValue(Playlist.class);
+                            isvisible = playlist.isVisibility();
                             if(isvisible==true) {
-                                mDatabaseRef.child("UserAccess").child(userID).child(jackiechan).setValue(1);
-                                Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_LONG).show();
-                                try{ Thread.sleep(1000); }catch(InterruptedException e){ }
+                                mDatabaseRef.child("UserAccess").child(userID).child(jackiechan).setValue(jackiechan);
+                                mDatabaseRef.child("UserAccess").child(userID).child("currentplaylist").setValue(jackiechan);
+                                Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                             else{
                                 String value = String.valueOf(isvisible);
                                 Toast.makeText(basecontext, value, Toast.LENGTH_LONG).show();
                             }
-
                         }
 
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                         }
                     });
-
                 }
             }
         });
@@ -177,14 +180,14 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                         String SpID = String.valueOf(playlistID++);
                         mDatabaseRef.child("playlists").child(SpID).setValue(playlist);
                         mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
-                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(1);
+                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(splaylistID);
                     }
                     if (baskinrobins.equals("private")){
                         Playlist playlist = new Playlist(chuckNorris, pathtoimage, false, userID);
                         String SpID = String.valueOf(playlistID++);
                         mDatabaseRef.child("playlists").child(SpID).setValue(playlist);
                         mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
-                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(1);
+                        mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(splaylistID);
                     }
                     Toast.makeText(basecontext, "Playlist successfully created", Toast.LENGTH_LONG).show();
                     try{ Thread.sleep(1000); }catch(InterruptedException e){ }
@@ -195,9 +198,12 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
             /*
             METHOD TO IMPLEMENT AFTER
+
+
         Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
         StorageReference riversRef = storageRef.child("images/"+file.getLastPathSegment());
         uploadTask = riversRef.putFile(file);
+
 // Register observers to listen for when the download is done or if it fails
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -213,4 +219,6 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
         });
         */
     }
+
+
 }

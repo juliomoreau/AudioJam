@@ -46,6 +46,13 @@
                     android:gravity="center_vertical"
                     android:paddingLeft="80dp" />
 
+                <Button
+                    android:id="@+id/buttonconfirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Button" />
+
             </LinearLayout>
 
         </android.support.v7.widget.Toolbar>
@@ -57,17 +64,10 @@
         android:layout_height="match_parent"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
-        <FrameLayout
+        <ListView
+            android:id="@+id/listview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/playlist_mainview">
-
-            <TextView
-                android:text="TextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/pmainview_txt1" />
-        </FrameLayout>
+            android:layout_height="wrap_content" />
     </android.support.v4.widget.NestedScrollView>
 
     <android.support.design.widget.FloatingActionButton

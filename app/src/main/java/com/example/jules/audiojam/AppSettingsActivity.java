@@ -45,7 +45,7 @@ public class AppSettingsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //get firebase auth instance
-        auth = FirebaseAuth.getInstance();
+                auth = FirebaseAuth.getInstance();
 
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

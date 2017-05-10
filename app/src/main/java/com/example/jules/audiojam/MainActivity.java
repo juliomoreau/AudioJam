@@ -30,11 +30,13 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
     GoToImplementor mGTImpl = new GoToImplementor();
+    String playlistId;
     public final static String EXTRA = "com.example.domicile.finaltesting.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        Intent intent=getIntent();
+        playlistId= intent.getStringExtra("lol");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -116,7 +118,9 @@ public class MainActivity extends AppCompatActivity {
 
     /*Gestion du cycle de vie de l'appli*/
 
-
+    public String getPlaylistExtra(){
+        return playlistId;
+    }
 
 
 }

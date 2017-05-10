@@ -14,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -209,6 +210,8 @@ public class MusicFragment extends Fragment implements MaterialSearchBar.OnSearc
         adapter = new SearchAdapter(getActivity(),getActivity(),list);
         lv.setAdapter(adapter);
     }
+
+
 
 
 
