@@ -1,7 +1,7 @@
 package com.example.jules.audiojam;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -13,30 +13,32 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.example.jules.audiojam.GoToImplementor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    private FirebaseAuth.AuthStateListener authListener;
-    private FirebaseAuth auth;
+public class MainActivity extends AppCompatActivity {
 
     DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
     GoToImplementor mGTImpl = new GoToImplementor();
-    String playlistId;
-    public final static String EXTRA = "com.example.domicile.finaltesting.MESSAGE";
+    public final static String EXTRA = "MESSAGE";
+
+    private FirebaseAuth.AuthStateListener authListener;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Intent intent=getIntent();
-        playlistId= intent.getStringExtra("lol");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -51,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
         mFragmentTransaction.replace(R.id.containerView, new TabFragment()).commit();
-
-
 
         //Setup click events
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
@@ -96,31 +96,25 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
-        //Floating action button
-        FloatingActionButton fab= (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener(
-
-        ) {
+        //Setting up the onclicklistener for the floating action button (fab)
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mGTImpl.gotoAddJoinPlaylist(v);
             }
         });
 
-
+        //TODO: Create the lists for the coming, past and wall through
+        // database insertion (might need the use of interfaces with fragments)
+        Button btn1 = (Button) findViewById(R.id.btnComing);
+        Button btn2 = (Button) findViewById(R.id.btnHistory);
+        Button btn3 = (Button) findViewById(R.id.btnWall);
     }
-
 
     //sign out method
     public void signOut() {
         auth.signOut();
     }
-
-    /*Gestion du cycle de vie de l'appli*/
-
-    public String getPlaylistExtra(){
-        return playlistId;
-    }
-
 
 }

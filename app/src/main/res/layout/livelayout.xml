@@ -68,19 +68,15 @@
             android:background="@color/colorBackground" />
     </LinearLayout>
 
-    <ListView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listComing" />
+        android:id="@+id/liveTableLayout">
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listHistory" />
-
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listWall" />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listviewlive"></ListView>
+    </FrameLayout>
 
 </LinearLayout>

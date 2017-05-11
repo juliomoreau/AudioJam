@@ -32,14 +32,14 @@
             android:gravity="center_vertical" />
 
         <EditText
+            android:id="@+id/editTextAdmin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/editText"
+            android:layout_marginRight="20dp"
             android:layout_weight="5"
             android:background="@drawable/editextshape"
-            android:layout_marginRight="20dp" />
+            android:ems="10"
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 
@@ -69,14 +69,14 @@
             android:gravity="center_vertical" />
 
         <EditText
+            android:id="@+id/editTextFriend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/editText2"
+            android:layout_marginRight="20dp"
             android:layout_weight="5"
             android:background="@drawable/editextshape"
-            android:layout_marginRight="20dp" />
+            android:ems="10"
+            android:inputType="textPersonName" />
 
     </LinearLayout>
 
@@ -105,26 +105,26 @@
             android:textSize="18sp"
             android:gravity="center_vertical" />
 
-        <android.support.v7.widget.AppCompatSpinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinnerVisibility"
-            android:layout_weight="12"
-            android:background="@drawable/editextshape"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
-
     </LinearLayout>
 
     <Button
-        android:text="@string/validate"
+        android:id="@+id/confirmOptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/white"
         android:layout_gravity="left"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="20dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/validate"
+        android:textColor="@color/white" />
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/spinnerVisibility"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="12"
+        android:background="@drawable/editextshape" />
 
     <TextView
         android:text="@string/sharing_link"
