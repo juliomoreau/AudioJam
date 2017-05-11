@@ -1,12 +1,10 @@
 package com.example.jules.audiojam;
 
+
 import android.content.Context;
-import android.net.Uri;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,7 +13,6 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,9 +21,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +45,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //TODO: Integrate the storage for the cover and it's database String equivalent (path-to-image)
+        super.onCreate(savedInstanceState);
 
         final Context basecontext = this;
         final String userID = getIntent().getStringExtra(MainActivity.EXTRA);
@@ -58,7 +54,6 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
         //Setting up the storage
         mStorageRef = storage.getReference();
         StorageReference coversRef = mStorageRef.child("covers");
-        super.onCreate(savedInstanceState);
 
         //Setting up the RTDatabase
         mDatabaseRef = database.getReference();
@@ -102,7 +97,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                 * String pathtoimage = newRef.getName();
                 */
 
-        //Creating a listener for change in the database for the currentplaylistID
+        //Creating a listener for change in the database for the currentplaylistID to create new playlists then adding it
         ValueEventListener newidlistener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -114,26 +109,24 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
         };
         pIDRef.addValueEventListener(newidlistener);
 
+        //Set a listener on the confirm to join button
         btnJoinP.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 //TODO: Create a Method to verify join of playlist (does exist? is joinable? TOKEN=CRYPTED OR MODIFIED ID
+                //TODO: previous method that stocks in memory the QRCODE? or else integrated method inside the onclick method
 
-                /*
-                There is a current issue where it is necessary to click twice to join a playlist (find a workaround)
-                Possible is creating an exterior function called just before adding values to database.
-                 */
-
-                //TODO previous method that stocks in memory the QRCODE? or else integrated method inside the onclick method
                 final String jackiechan =editTxtToken.getText().toString();
                 DatabaseReference ref = mDatabaseRef.child("playlists").child(jackiechan);
 
+                //Verify if an ID has been set
                 if (jackiechan.equals("")) {
                     Toast toast = Toast.makeText(basecontext, "Please enter the token or flash the QRCode", Toast.LENGTH_LONG);
                     toast.show();
                 }
                 else{
-
+                    //add a value event listener to get playlists of value entered previously.
+                    // Check if visible, if true add values to Access list
                     ref.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -141,6 +134,7 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                             isvisible = playlist.isVisibility();
                             if(isvisible==true) {
                                 mDatabaseRef.child("UserAccess").child(userID).child(jackiechan).setValue(jackiechan);
+                                mDatabaseRef.child("UserAccess").child(userID).child("currentplaylist").setValue(jackiechan);
                                 Toast.makeText(basecontext, "Playlist joined successfully", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
@@ -163,16 +157,18 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //TODO: Integrate the use of stored images for covers
-                //TODO: Creation of QRCODE?
+                //TODO: Creation of QRCODE in a sperate method and store in path
                 String baskinrobins = visibility.getSelectedItem().toString();
                 String chuckNorris = editTxtName.getText().toString();
                 String pathtoimage = "TODO";
                 playlistID = Integer.parseInt(splaylistID);
 
+                //Check if fields are empty
                 if (chuckNorris.equals("") || baskinrobins.equals("")){
                     Toast.makeText(basecontext, "Please fill the blanks", Toast.LENGTH_LONG).show();
                 }
 
+                //If not empty, check value of spinner and create a playlist objet to be set in DB
                 else{
                     if (baskinrobins.equals("public")){
                         Playlist playlist = new Playlist(chuckNorris, pathtoimage, true, userID);
@@ -188,6 +184,8 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
                         mDatabaseRef.child("currentplaylistID").setValue(playlistID++);
                         mDatabaseRef.child("UserAccess").child(userID).child(splaylistID).setValue(splaylistID);
                     }
+
+                    //Notify that the adding was successful
                     Toast.makeText(basecontext, "Playlist successfully created", Toast.LENGTH_LONG).show();
                     try{ Thread.sleep(1000); }catch(InterruptedException e){ }
                     finish();
@@ -197,12 +195,9 @@ public class AddJoinPlaylistActivity extends AppCompatActivity {
 
             /*
             METHOD TO IMPLEMENT AFTER
-
-
         Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
         StorageReference riversRef = storageRef.child("images/"+file.getLastPathSegment());
         uploadTask = riversRef.putFile(file);
-
 // Register observers to listen for when the download is done or if it fails
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override

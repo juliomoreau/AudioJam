@@ -65,18 +65,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
+        //Setting listener to the login button
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
 
+                //checking the email field
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Entrez une adresse e-mail", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
+                //checking the password field
                 if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Entrez un mot de passe!", Toast.LENGTH_SHORT).show();
                     return;

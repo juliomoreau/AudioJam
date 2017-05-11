@@ -25,10 +25,10 @@ import entities.ResultSearch;
 public class PlaylistAdapter extends BaseAdapter {
     Context context;
     Activity activity;
-
     private static LayoutInflater inflater;
     private List<Playlist> items;
 
+    //Constructor for the Adapter to call when wanting to fill a listview
     public PlaylistAdapter(Context context, Activity activity, List<Playlist> playlistList){
         this.context=context;
         this.activity=activity;
@@ -53,6 +53,7 @@ public class PlaylistAdapter extends BaseAdapter {
         return position;
     }
 
+    //La méthode getView est celle qui est appelée lors de la création d'une listview.
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         View vi = convertView;

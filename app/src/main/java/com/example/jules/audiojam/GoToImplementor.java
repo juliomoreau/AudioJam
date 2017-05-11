@@ -13,8 +13,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class GoToImplementor
 
 {
-
     //Creating the functions to travel through pages
+
     //Will be called when the user clicks the corresponding menu item.
     public void gotoMyPlaylists(View view){
         Intent intent = new Intent(view.getContext(), PlaylistActivity.class);
@@ -35,19 +35,19 @@ public class GoToImplementor
 
     public void gotoHelp(View view){
         Intent intent = new Intent(view.getContext(), HelpActivity.class);
-        intent.putExtra(MainActivity.EXTRA, "ici entrer la valeur de l'utilisateur (on pourra récup les infos en direct de la même façon");
+        intent.putExtra(MainActivity.EXTRA, "ici entrer infos nécessaires");
         view.getContext().startActivity(intent);
     }
 
     public void gotoAppSettings(View view){
         Intent intent = new Intent(view.getContext(), AppSettingsActivity.class);
-        intent.putExtra(MainActivity.EXTRA, "ici entrer la valeur de l'utilisateur (on pourra récup les infos en direct de la même façon");
+        intent.putExtra(MainActivity.EXTRA, "ici entrer infos nécessaires");
         view.getContext().startActivity(intent);
     }
 
     public void gotoAbout(View view){
         Intent intent = new Intent(view.getContext(), AboutActivity.class);
-        intent.putExtra(MainActivity.EXTRA, "ici entrer la valeur de l'utilisateur (on pourra récup les infos en direct de la même façon");
+        intent.putExtra(MainActivity.EXTRA, "ici entrer infos nécessaires");
         view.getContext().startActivity(intent);
     }
 

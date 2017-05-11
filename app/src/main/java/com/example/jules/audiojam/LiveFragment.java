@@ -50,9 +50,11 @@ import entities.Music;
 public class LiveFragment extends Fragment {
     private static final String API_KEY = "AIzaSyAnhCNVBVq-j3sBkhBZUDW8TVlXIjSX648";
     private static String VIDEO_ID = "a4NT5iBFuZs";
-    FragmentManager mFragmentManager;
-    FragmentTransaction mFragmentTransaction;
 
+    /*FragmentManager mFragmentManager;
+    FragmentTransaction mFragmentTransaction;*/
+
+    //Initializing values for user id and references
     String UserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
     String mycurrentplaylistID;
     List<Music> musicList = new ArrayList<>(5);
@@ -82,7 +84,7 @@ public class LiveFragment extends Fragment {
         //Initialise le player
         youTubePlayerFragment.initialize(API_KEY, new YouTubePlayer.OnInitializedListener() {
 
-
+            //Youtube Initialization success
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
                 if (!wasRestored) {
@@ -101,7 +103,7 @@ public class LiveFragment extends Fragment {
             }
         });
 
-
+        //Create a value event listener to get current playlist of user and adding it
         ValueEventListener newidlistener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -124,11 +126,11 @@ public class LiveFragment extends Fragment {
 
 
         //TODO:INITIALIZE text on it's values or create template values.
-
         Button btn1 = (Button) getView().findViewById(R.id.btnComing);
         Button btn2 = (Button) getView().findViewById(R.id.btnHistory);
         Button btn3 = (Button) getView().findViewById(R.id.btnWall);
 
+        //Creating a value event listener to get list of music for the current playlist
         final ValueEventListener livevalueEventListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -145,16 +147,17 @@ public class LiveFragment extends Fragment {
             }
         };
 
-       /* btn1.setOnClickListener(new View.OnClickListener() {
+        //Creating a listener for click on the "Coming" button and adding the eventlistener created above
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 musiclistref.addValueEventListener(livevalueEventListener);
                 Log.e("val of list", musicList.toString());
-                /*ListView listView = (ListView) getView().findViewById(R.id.listviewlive);
+                ListView listView = (ListView) getView().findViewById(R.id.listviewlive);
                 MusicAdapter musicAdapter = new MusicAdapter(getContext(), getActivity(), musicList);
                 listView.setAdapter(musicAdapter);
             }
-        });*/
+        });
     }
 }
 
@@ -169,24 +172,24 @@ public class LiveFragment extends Fragment {
                     addListItemLive(res.get(i));
                 }
             }
-        });
+        });*/
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        /*btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
+
+        /*btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
+    }*/
 
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-    }
-
-    public List<Music> getListLive(String playlistToken){
+    /*public List<Music> getListLive(String playlistToken){
         final List<Music> lm = new ArrayList<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mDatabaseRef;
@@ -214,8 +217,8 @@ public class LiveFragment extends Fragment {
         mDatabaseRef.child("playlists").child(playlistToken).child("musicList");
         return lm;
     }
-
-    public List<Music> getListPast(String playlistToken){
+*/
+    /*public List<Music> getListPast(String playlistToken){
         //Create a past list in the database for every playlist where a music will be passed to (and deleted from the actual list)
         List<Music> lm = new ArrayList<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -223,18 +226,18 @@ public class LiveFragment extends Fragment {
         mDatabaseRef = database.getReference();
 
         return lm;
-    }
+    }*/
 
-    public List<String> getListWall(String playlistToken){
+    /*public List<String> getListWall(String playlistToken){
         List<String> ls = new ArrayList<>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference mDatabaseRef;
         mDatabaseRef = database.getReference();
 
         return ls;
-    }
+    }*/
 
-    public TableRow addListItemLive(Music m){
+    /*public TableRow addListItemLive(Music m){
         Context c = getContext();
         LinearLayout l1 = new LinearLayout(c);
         LinearLayout l2 = new LinearLayout(c);
@@ -262,15 +265,15 @@ public class LiveFragment extends Fragment {
 
         tbR.addView(l1);
         return tbR;
-    }
+    }*/
 
-    public TableRow addListItemPast(Music m){
+    /*public TableRow addListItemPast(Music m){
         TableRow tbR = new TableRow(getContext());
 
         return tbR;
-    }
+    }*/
 
-    public TableRow addListItemWall(String s){
+   /*public TableRow addListItemWall(String s){
         TableRow tbR = new TableRow(getContext());
 
         return tbR;

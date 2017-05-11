@@ -32,14 +32,11 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
     GoToImplementor mGTImpl = new GoToImplementor();
-    public final static String EXTRA = "com.example.domicile.finaltesting.MESSAGE";
+    public final static String EXTRA = "MESSAGE";
 
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
 
-    ListView cominglist;
-    ListView pastlist;
-    ListView walllist;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Create the lists for the coming, past and wall through database insertion (might need the use of interfaces with fragments)
+        //TODO: Create the lists for the coming, past and wall through
+        // database insertion (might need the use of interfaces with fragments)
         Button btn1 = (Button) findViewById(R.id.btnComing);
         Button btn2 = (Button) findViewById(R.id.btnHistory);
         Button btn3 = (Button) findViewById(R.id.btnWall);

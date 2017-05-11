@@ -27,10 +27,6 @@ public class TabFragment extends Fragment {
 
         //Inflate tabLayout and set views
         View v = inflater.inflate(R.layout.tab_layout, container, false);
-
-        //if (savedInstanceState != null) {
-            // restore your state from "savedInstanceState"
-        //} else {
             tabLayout = (TabLayout) v.findViewById(R.id.tabs);
             viewPager = (ViewPager) v.findViewById(R.id.viewpager);
             //viewPager.setOffscreenPageLimit(3);
@@ -45,7 +41,7 @@ public class TabFragment extends Fragment {
                     tabLayout.setupWithViewPager(viewPager);
                 }
             });
-        //}
+
             return v;
         }
 

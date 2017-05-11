@@ -22,17 +22,14 @@ public class OptionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.optionslayout, null);
-
-
-
         return rootView;
     }
 
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        final Spinner visibility = (Spinner) getActivity().findViewById(R.id.spinnerVisibility);
-
+        //Setting the spinner and creating the adapter
+        Spinner visibility = (Spinner) getActivity().findViewById(R.id.spinnerVisibility);
         List<String> spinArray = new ArrayList<String>();
         spinArray.add("public");
         spinArray.add("private");

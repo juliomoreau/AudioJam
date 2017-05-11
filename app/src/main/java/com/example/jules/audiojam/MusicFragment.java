@@ -79,11 +79,7 @@ public class MusicFragment extends Fragment implements MaterialSearchBar.OnSearc
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
         return inflater.inflate(R.layout.musiclayout, null);
-
-
-
     }
 
 
@@ -91,20 +87,15 @@ public class MusicFragment extends Fragment implements MaterialSearchBar.OnSearc
 
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
-
-
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         searchBar = (MaterialSearchBar) getView().findViewById(R.id.sB);
         searchBar.setHint("Recherche ...");
         searchBar.setOnSearchActionListener(this);
-
-
     }
 
     @Override
     public void onSearchStateChanged(boolean enabled) {
-
     }
 
     @Override
@@ -158,16 +149,12 @@ public class MusicFragment extends Fragment implements MaterialSearchBar.OnSearc
         } catch (Throwable t) {
             t.printStackTrace();
         }
-
     }
 
 
     @Override
     public void onButtonClicked(int buttonCode) {
-
     }
-
-
 
     /*
    * Prints out all results in the Iterator. For each result, print the
@@ -194,22 +181,13 @@ public class MusicFragment extends Fragment implements MaterialSearchBar.OnSearc
             if (rId.getKind().equals("youtube#video")) {
                 Thumbnail thumbnail = singleVideo.getSnippet().getThumbnails().getDefault();
                 ResultSearch resultat = new ResultSearch(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId(),thumbnail);
-
                 list.add(resultat);
-
-
             }
-
         }
         lv=(ListView) getView().findViewById(R.id.listView);
 
         adapter = new SearchAdapter(getActivity(),getActivity(),list);
         lv.setAdapter(adapter);
     }
-
-
-
-
-
 
 }
