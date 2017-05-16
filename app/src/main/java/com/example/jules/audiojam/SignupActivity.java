@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -22,6 +24,8 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference mDatabaseRef=database.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +85,9 @@ public class SignupActivity extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(SignupActivity.this, "Authentication ratée." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
+
                                 } else {
+                                    mDatabaseRef.child("UserAccess").child(auth.getInstance().getCurrentUser().getUid()).child("currentplaylist").setValue(0);
                                     startActivity(new Intent(SignupActivity.this, MainActivity.class));
                                     finish();
                                 }

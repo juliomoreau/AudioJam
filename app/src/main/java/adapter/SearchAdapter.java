@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.jules.audiojam.MainActivity;
 import com.example.jules.audiojam.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,8 +41,8 @@ public class SearchAdapter extends BaseAdapter {
     DatabaseReference databaseRef=database.getReference();
     DatabaseReference getDatabaseRefPlaylist=databaseRef.child("playlists");
     public String retrievePlaylistID(){
-
-        databaseRef.child("UserAccess").child("CNOfE4e1EtZRJ5nGKOE7nOpTDVQ2").child("currentplaylist").addValueEventListener(new ValueEventListener() {
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        databaseRef.child("UserAccess").child(user.getUid()).child("currentplaylist").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 current = dataSnapshot.getValue(String.class);
