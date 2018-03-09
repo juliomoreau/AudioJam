@@ -1,4 +1,7 @@
 # AudioJam
-The new way to manage music at your events
 
-By Jules && Joseph
+## Intro
+AudioJam is the new way to manage music at your events.
+Watch our demo on YouTube [here]()
+
+Jules & Joseph
